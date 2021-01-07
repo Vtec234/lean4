@@ -38,6 +38,7 @@ private def escapeAux (c : Char) (acc : String) : String :=
       Nat.digitChar (n % 16) ].asString ++
     acc
 
+-- TODO(WN): blows the stack on long strings
 def escape (s : String) : String := do
   s.foldr escapeAux ""
 

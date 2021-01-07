@@ -993,7 +993,11 @@ private partial def elabTermAux (expectedType? : Option Expr) (catchExPostpone :
   The option `catchExPostpone == false` is used to implement `resumeElabTerm`
   to prevent the creation of another synthetic metavariable when resuming the elaboration. -/
 def elabTerm (stx : Syntax) (expectedType? : Option Expr) (catchExPostpone := true) : TermElabM Expr :=
-  withRef stx $ elabTermAux expectedType? catchExPostpone true stx
+  withRef stx do
+    let e ← elabTermAux expectedType? catchExPostpone true stx
+    let eType ← inferType e
+    trace[Hack.semanticInfo]! (MessageData.tagged `Hack.termType (MessageData.compose stx eType))
+    e
 
 def elabTermEnsuringType (stx : Syntax) (expectedType? : Option Expr) (catchExPostpone := true) (errorMsgHeader? : Option String := none) : TermElabM Expr := do
   let e ← elabTerm stx expectedType? catchExPostpone

@@ -16,7 +16,6 @@ import Lean.Data.Json.FromToJson
 import Lean.Server.Snapshots
 import Lean.Server.Utils
 import Lean.Server.AsyncList
-import Lean.Server.StxUtils
 
 /-!
 For general server architecture, see `README.md`. For details of IPC communication, see `Watchdog.lean`.
@@ -100,7 +99,6 @@ section ServerM
   structure ServerContext where
     hIn                : FS.Stream
     hOut               : FS.Stream
-    hLog               : FS.Stream
     docRef             : IO.Ref EditableDocument
     pendingRequestsRef : IO.Ref PendingRequestMap
 
@@ -111,14 +109,12 @@ section ServerM
 
   /-- Elaborates the next command after `parentSnap` and emits diagnostics. -/
   private def nextCmdSnap (m : DocumentMeta) (parentSnap : Snapshot) (cancelTk : CancelToken) : ExceptT TaskError ServerM Snapshot := do
-    let _ ← IO.setStderr (←read).hLog
     cancelTk.check
     let st ← read
     let maybeSnap ← compileNextCmd m.text.source parentSnap
     cancelTk.check
     let sendDiagnostics (msgLog : MessageLog) : IO Unit := do
-      let msgs := msgLog.msgs.filter (fun msg => msg.data.topTag != some `Hack.semanticInfo)
-      let diagnostics ← msgs.mapM (msgToDiagnostic m.text)
+      let diagnostics ← msgLog.msgs.mapM (msgToDiagnostic m.text)
       st.hOut.writeLspNotification {
         method := "textDocument/publishDiagnostics"
         param  := {
@@ -159,8 +155,6 @@ section ServerM
   def compileDocument (m : DocumentMeta) : ServerM Unit := do
     let headerSnap@⟨_, _, _, SnapshotData.headerData env msgLog opts⟩ ← Snapshots.compileHeader m.text.source
       | throwServerError "Internal server error: invalid header snapshot"
-    let opts := opts.setBool `trace.Hack.semanticInfo true
-    let headerSnap := { headerSnap with data := SnapshotData.headerData env msgLog opts }
     let cancelTk ← CancelToken.new
     let cmdSnaps ← unfoldCmdSnaps m headerSnap cancelTk
     (←read).docRef.set ⟨m, headerSnap, cmdSnaps, cancelTk⟩
@@ -260,24 +254,12 @@ section RequestHandling
      (this way, the server doesn't get bogged down in requests for an old state of the document).
      Requests need to manually check for whether their task has been cancelled, so that they
      can reply with a RequestCancelled error. -/
-  open MessageData in
   partial def handleHover (id : RequestID) (p : HoverParams)
     : ServerM (Task (Except IO.Error (Except RequestError (Option Hover)))) := do
-    let st ← read
-    let doc ← st.docRef.get
+    let doc ← (←read).docRef.get
     let text := doc.meta.text
     let hoverPos := text.lspPosToUtf8Pos p.position
     let findTask ← doc.cmdSnaps.waitFind? (fun s => s.endPos > hoverPos)
-    let mkHover (s : String) (f : Lean.Position) (t : Lean.Position) : Hover :=
-      { contents := { kind := MarkupKind.plaintext
-                      value := s }
-        range? := some { start := text.leanPosToLspPos f
-                         «end» := text.leanPosToLspPos t } }
-    let mkHover' (s : String) (f : String.Pos) (t : String.Pos) : Hover :=
-      { contents := { kind := MarkupKind.plaintext
-                      value := s }
-        range? := some { start := text.utf8PosToLspPos f
-                         «end» := text.utf8PosToLspPos t } }
     (IO.mapTask · findTask) fun
       | Except.error TaskError.aborted =>
         pure $ Except.error { code := ErrorCode.contentModified, message := "File changed." }
@@ -285,31 +267,18 @@ section RequestHandling
         throwThe IO.Error e
       | Except.error TaskError.eof =>
         pure $ Except.ok none
-      | Except.ok (some snap) => do
-        let hoverPosition := text.toPosition hoverPos
-        for msg in snap.msgLog.msgs do
-          match msg.endPos with
-          | none => pure ()
-          | some endPos =>
-            if msg.pos ≤ hoverPosition ∧ hoverPosition ≤ endPos then
-              match msg.data.smallestMatching? fun
-                | tagged `Hack.termType (compose (ofSyntax stx) _) =>
-                  if stx.getPos.isSome ∧ stx.getTailPos.isSome then
-                    if stx.getPos.get! ≤ hoverPos ∧ hoverPos ≤ stx.getTailPos.get! then true
-                    else false
-                  else false
-                | _ => false
-              with
-              | some d@(withContext c (tagged _ (compose (ofSyntax s) e))) =>
-                let d := withContext c e
-                let fmtD ← d.toString
-                return (Except.ok $ some $ mkHover' fmtD s.getPos.get! s.getTailPos.get!
-                  -- Type inference fails
-                  : Except RequestError _)
-              | some d => throwServerError s!"Internal server error: unexpected MessageData {repr d}"
-              | none => pure ()
+      | Except.ok snap? => do
+        let snap? := snap?.filter (fun s => s.beginPos ≤ hoverPos)
+        if let some snap := snap? then
+          if snap.stx.getKind == ``Lean.Parser.Command.declaration then
+            -- TODO(WN): 1. get at the right subexpression
+            --           2. reply with delaborated type
+            return Except.ok $ some
+              { contents := { kind := MarkupKind.plaintext
+                              value := s!"Declaration." }
+                range? := some { start := text.utf8PosToLspPos snap.beginPos
+                                 «end» := text.utf8PosToLspPos snap.endPos } }
         return Except.ok none
-      | Except.ok none => return Except.ok none
 
   def handleWaitForDiagnostics (id : RequestID) (p : WaitForDiagnosticsParam)
     : ServerM (Task (Except IO.Error (Except RequestError WaitForDiagnostics))) := do
@@ -457,7 +426,6 @@ def initAndRunWorker (i o e : FS.Stream) : IO Unit := do
   let ctx : ServerContext := {
     hIn                := i
     hOut               := o
-    hLog               := e
     -- `openDocument` will not access `docRef`, but set it
     docRef             := ←IO.mkRef arbitrary
     pendingRequestsRef := ←IO.mkRef (RBMap.empty : PendingRequestMap)

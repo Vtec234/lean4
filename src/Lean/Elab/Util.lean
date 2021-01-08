@@ -187,6 +187,5 @@ partial def mkUnusedBaseName [Monad m] [MonadEnv m] [MonadResolveName m] (baseNa
 builtin_initialize
   registerTraceClass `Elab
   registerTraceClass `Elab.step
-  registerTraceClass `Hack.semanticInfo
 
 end Lean.Elab

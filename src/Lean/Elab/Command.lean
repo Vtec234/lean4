@@ -260,9 +260,7 @@ private def addTraceAsMessages (ctx : Context) (log : MessageLog) (traceState : 
     (fun (log : MessageLog) traceElem =>
       let ref := replaceRef traceElem.ref ctx.ref;
       let pos := ref.getPos.getD 0;
-      let endPos := ref.getTailPos.getD pos
-      let msg := mkMessageCore ctx.fileName ctx.fileMap traceElem.msg MessageSeverity.information pos
-      log.add { msg with endPos := some <| ctx.fileMap.toPosition endPos })
+      log.add (mkMessageCore ctx.fileName ctx.fileMap traceElem.msg MessageSeverity.information pos))
     log
 
 def liftTermElabM {α} (declName? : Option Name) (x : TermElabM α) : CommandElabM α := do

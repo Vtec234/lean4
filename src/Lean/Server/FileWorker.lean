@@ -183,7 +183,7 @@ section ServerM
     let stderr ← IO.ofExcept stderr.get
     if (← leanpkgProc.wait) == 0 then
       match stdout.split (· == '\n') with
-      | [leanPath, leanSrcPath] => searchPathRef.set (← parseSearchPath leanPath (← getBuiltinSearchPath))
+      | [leanPath, leanSrcPath] => searchPathRef.set <| parseSearchPath leanPath (← getBuiltinSearchPath)
       | _                       => throw <| IO.userError "unexpected output from `leanpkg src-path`:\n{stdout}\nstderr:{stderr}"
     else
       throw <| IO.userError stderr

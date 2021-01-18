@@ -152,14 +152,14 @@ section ServerM
   def unfoldCmdSnaps (m : DocumentMeta) (initSnap : Snapshot) (cancelTk : CancelToken) : ServerM (AsyncList ElabTaskError Snapshot) := do
     AsyncList.unfoldAsync (nextCmdSnap m . cancelTk (←read)) initSnap
 
-  /-- Use `leanpkg print-path` to compile dependencies on the fly and add them to LEAN_PATH. -/
+  /-- Use `leanpkg print-paths` to compile dependencies on the fly and add them to LEAN_PATH. -/
   partial def leanpkgSetupSearchPath (m : DocumentMeta) (imports : Array Import) : ServerM Unit := do
     let leanpkgProc ← Process.spawn {
       stdin  := Process.Stdio.null
       stdout := Process.Stdio.piped
       stderr := Process.Stdio.piped
       cmd    := s!"{← appDir}/leanpkg"
-      args   := #["print-path"] ++ imports.map (toString ·.module)
+      args   := #["print-paths"] ++ imports.map (toString ·.module)
     }
     let hOut := (← read).hOut
     -- progress notification: report latest stderr line
@@ -179,10 +179,12 @@ section ServerM
         }
         processStderr (acc ++ line)
     let stderr ← IO.asTask (processStderr "") Task.Priority.dedicated
-    let leanPath := String.trim (← leanpkgProc.stdout.readToEnd)
+    let stdout := String.trim (← leanpkgProc.stdout.readToEnd)
     let stderr ← IO.ofExcept stderr.get
     if (← leanpkgProc.wait) == 0 then
-      searchPathRef.set (← parseSearchPath leanPath (← getBuiltinSearchPath))
+      match stdout.split (· == '\n') with
+      | [leanPath, leanSrcPath] => searchPathRef.set (← parseSearchPath leanPath (← getBuiltinSearchPath))
+      | _                       => throw <| IO.userError "unexpected output from `leanpkg src-path`:\n{stdout}\nstderr:{stderr}"
     else
       throw <| IO.userError stderr
 
@@ -195,16 +197,15 @@ section ServerM
     if (← fileExists "leanpkg.toml") && (← fileExists s!"{← appDir}/leanpkg") then
       leanpkgSetupSearchPath m (Lean.Elab.headerToImports headerStx).toArray
     let (headerEnv, msgLog) ← Elab.processHeader headerStx opts msgLog inputCtx
+    let cmdState := Elab.Command.mkState headerEnv msgLog opts
+    let opts := opts.setBool `interpreter.prefer_native false
+    let cmdState := { cmdState with infoState.enabled := true, scopes := [{ header := "", opts := opts }] }
     let headerSnap := {
       beginPos := 0
       stx := headerStx
       mpState := headerParserState
-      data := SnapshotData.headerData <| Command.mkState headerEnv msgLog opts
+      data := SnapshotData.headerData cmdState
     }
-    let opts : Options := {}
-    let opts := opts.setBool `interpreter.prefer_native false
-    let cmdState := { cmdState with infoState.enabled := true, scopes := [{ header := "", opts := opts }] }
-    let headerSnap := { headerSnap with data := SnapshotData.headerData cmdState }
     let cancelTk ← CancelToken.new
     let cmdSnaps ← unfoldCmdSnaps m headerSnap cancelTk
     (←read).docRef.set ⟨m, headerSnap, cmdSnaps, cancelTk⟩

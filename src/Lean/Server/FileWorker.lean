@@ -135,7 +135,14 @@ section Elab
   /-- Elaborates all commands after `initSnap`, emitting the diagnostics into `hOut`. -/
   def unfoldCmdSnaps (m : DocumentMeta) (initSnap : Snapshot) (cancelTk : CancelToken) (hOut : FS.Stream)
   : IO (AsyncList ElabTaskError Snapshot) := do
-    AsyncList.unfoldAsync (nextCmdSnap m . cancelTk hOut) initSnap
+    /- We wait a little before beginning elaboration. If the user makes further edits during this time,
+    elaboration on the now outdated contents will be immediately cancelled. -/
+    let editWaitAct : ExceptT ElabTaskError IO (AsyncList ElabTaskError Snapshot) := do
+      cancelTk.check
+      IO.sleep 500
+      cancelTk.check
+      AsyncList.unfoldAsync (nextCmdSnap m . cancelTk hOut) initSnap
+    AsyncList.mkAsyncTail editWaitAct
 end Elab
 
 -- Pending requests are tracked so they can be cancelled

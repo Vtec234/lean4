@@ -58,6 +58,10 @@ partial def unfoldAsync [Coe Error ε] (f : α → ExceptT ε IO α) (init : α)
   let tInit ← coeErr <$> asTask (step init)
   asyncTail tInit
 
+/-- Makes an async tail out of a computation which produces it. -/
+def mkAsyncTail [Coe Error ε] (x : ExceptT ε IO (AsyncList ε α)) : IO (AsyncList ε α) :=
+  (asyncTail ∘ coeErr) <$> asTask x
+
 /-- The computed, synchronous list. If an async tail was present, returns also
 its terminating value. -/
 partial def getAll : AsyncList ε α → List α × Option ε

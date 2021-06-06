@@ -332,16 +332,21 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LEAN_EXTRA_LINKER_FLAGS} -Wl,--export-all")
   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--export-all")
   set(LEANC_SHARED_LINKER_FLAGS "${LEANC_SHARED_LINKER_FLAGS} -Wl,--export-all")
-  # We currently have too many symbols in our executable for Windows; see
-  # https://github.com/leanprover/lean4/issues/466
-  # and
-  # https://github.com/leanprover/lean4/issues/467
-  set(LEAN_EXTRA_MAKE_OPTS "-Dcompiler.extract_closed=false")
 else()
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LEAN_EXTRA_LINKER_FLAGS} -rdynamic")
   set(LEANC_STATIC_LINKER_FLAGS "${LEANC_STATIC_LINKER_FLAGS} -ldl")
   set(LEANC_SHARED_LINKER_FLAGS "${LEANC_SHARED_LINKER_FLAGS} -ldl")
 endif()
+
+# We currently have too many symbols in our executable for Windows; see
+# https://github.com/leanprover/lean4/issues/466
+# and
+# https://github.com/leanprover/lean4/issues/467
+# Note that this has to be set on all platforms rather than just Windows because we usually
+# copy the emitted C code into stage0 when developing on Unix. The emitted C cannot contain
+# the extracted closed terms. Otherwise, stage0 fails to link on Windows.
+# TODO: remove this limitation as per #466
+set(LEAN_EXTRA_MAKE_OPTS "-Dcompiler.extract_closed=false")
 
 # Allow `lean` symbols in plugins without linking directly against it. If we linked against the
 # executable or `leanshared`, plugins would try to look them up at load time (even though they

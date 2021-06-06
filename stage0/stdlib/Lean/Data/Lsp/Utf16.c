@@ -16,7 +16,6 @@ extern "C" {
 lean_object* l_String_utf16PosToCodepointPos___boxed(lean_object*, lean_object*);
 lean_object* l_String_codepointPosToUtf16PosFrom___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* l___private_Lean_Data_Lsp_Utf16_0__String_codepointPosToUtf16PosFromAux_match__1(lean_object*);
-lean_object* l_String_utf16Length___closed__1;
 lean_object* l_String_utf16PosToCodepointPosFrom___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* l___private_Lean_Data_Lsp_Utf16_0__String_utf16PosToCodepointPosFromAux_match__1(lean_object*);
 extern lean_object* l_instInhabitedNat;
@@ -129,20 +128,12 @@ lean_dec(x_3);
 return x_4;
 }
 }
-static lean_object* _init_l_String_utf16Length___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_String_utf16Length___lambda__1___boxed), 2, 0);
-return x_1;
-}
-}
 lean_object* l_String_utf16Length(lean_object* x_1) {
 _start:
 {
 lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; 
 x_2 = lean_string_utf8_byte_size(x_1);
-x_3 = l_String_utf16Length___closed__1;
+x_3 = lean_alloc_closure((void*)(l_String_utf16Length___lambda__1___boxed), 2, 0);
 x_4 = lean_unsigned_to_nat(0u);
 x_5 = l_String_foldrAux_loop___rarg(x_3, x_4, x_1, x_2, x_4);
 lean_dec(x_2);
@@ -632,8 +623,6 @@ lean_dec_ref(res);
 res = initialize_Lean_Data_Position(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_String_utf16Length___closed__1 = _init_l_String_utf16Length___closed__1();
-lean_mark_persistent(l_String_utf16Length___closed__1);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus

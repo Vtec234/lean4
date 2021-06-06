@@ -16,6 +16,7 @@ extern "C" {
 lean_object* l_Lean_Elab_Term_removeUnused_match__2(lean_object*);
 lean_object* l_Lean_Elab_Term_removeUnused(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 size_t l_USize_add(size_t, size_t);
+lean_object* lean_mk_empty_array_with_capacity(lean_object*);
 uint8_t l_USize_decEq(size_t, size_t);
 lean_object* lean_array_uget(lean_object*, size_t);
 lean_object* l_Array_foldlMUnsafe_fold___at_Lean_Elab_Term_collectUsedFVarsAtFVars___spec__1(lean_object*, size_t, size_t, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
@@ -23,7 +24,6 @@ lean_object* l_Lean_CollectFVars_main(lean_object*, lean_object*);
 lean_object* l_Lean_Elab_Term_collectUsedFVarsAtFVars___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* lean_local_ctx_erase(lean_object*, lean_object*);
 size_t l_USize_sub(size_t, size_t);
-extern lean_object* l_Array_empty___closed__1;
 lean_object* l_Array_foldrMUnsafe_fold___at_Lean_Elab_Term_removeUnused___spec__1(lean_object*, size_t, size_t, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_Elab_Term_removeUnused_match__2___rarg(lean_object*, lean_object*);
 lean_object* lean_st_ref_get(lean_object*, lean_object*);
@@ -1134,37 +1134,37 @@ lean_inc(x_35);
 lean_dec(x_33);
 x_36 = lean_ctor_get(x_3, 1);
 lean_inc(x_36);
-x_37 = l_Array_empty___closed__1;
-x_38 = lean_alloc_ctor(0, 2, 0);
-lean_ctor_set(x_38, 0, x_37);
-lean_ctor_set(x_38, 1, x_2);
+x_37 = lean_unsigned_to_nat(0u);
+x_38 = lean_mk_empty_array_with_capacity(x_37);
 x_39 = lean_alloc_ctor(0, 2, 0);
-lean_ctor_set(x_39, 0, x_34);
-lean_ctor_set(x_39, 1, x_38);
+lean_ctor_set(x_39, 0, x_38);
+lean_ctor_set(x_39, 1, x_2);
 x_40 = lean_alloc_ctor(0, 2, 0);
-lean_ctor_set(x_40, 0, x_36);
+lean_ctor_set(x_40, 0, x_34);
 lean_ctor_set(x_40, 1, x_39);
-x_41 = lean_array_get_size(x_1);
-x_42 = lean_unsigned_to_nat(0u);
-x_43 = lean_nat_dec_lt(x_42, x_41);
+x_41 = lean_alloc_ctor(0, 2, 0);
+lean_ctor_set(x_41, 0, x_36);
+lean_ctor_set(x_41, 1, x_40);
+x_42 = lean_array_get_size(x_1);
+x_43 = lean_nat_dec_lt(x_37, x_42);
 if (x_43 == 0)
 {
-lean_dec(x_41);
+lean_dec(x_42);
 lean_dec(x_6);
 lean_dec(x_5);
 lean_dec(x_4);
 lean_dec(x_3);
-x_8 = x_40;
+x_8 = x_41;
 x_9 = x_35;
 goto block_32;
 }
 else
 {
 size_t x_44; size_t x_45; lean_object* x_46; 
-x_44 = lean_usize_of_nat(x_41);
-lean_dec(x_41);
+x_44 = lean_usize_of_nat(x_42);
+lean_dec(x_42);
 x_45 = 0;
-x_46 = l_Array_foldrMUnsafe_fold___at_Lean_Elab_Term_removeUnused___spec__1(x_1, x_44, x_45, x_40, x_3, x_4, x_5, x_6, x_35);
+x_46 = l_Array_foldrMUnsafe_fold___at_Lean_Elab_Term_removeUnused___spec__1(x_1, x_44, x_45, x_41, x_3, x_4, x_5, x_6, x_35);
 if (lean_obj_tag(x_46) == 0)
 {
 lean_object* x_47; lean_object* x_48; 

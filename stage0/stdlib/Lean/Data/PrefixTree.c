@@ -15,7 +15,6 @@ extern "C" {
 #endif
 lean_object* l_Std_RBNode_find___rarg(lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_insert_loop(lean_object*, lean_object*);
-lean_object* l_Lean_PrefixTree_empty___closed__1;
 lean_object* l_Lean_PrefixTreeNode_foldMatchingM_fold_match__2(lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_find_x3f_loop___rarg(lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_find_x3f_loop(lean_object*, lean_object*);
@@ -37,7 +36,6 @@ lean_object* l_Lean_instInhabitedPrefixTree(lean_object*, lean_object*, lean_obj
 lean_object* l_Lean_PrefixTreeNode_foldMatchingM___rarg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_insert_insertEmpty_match__1___rarg(lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_insert_loop___rarg(lean_object*, lean_object*, lean_object*, lean_object*);
-lean_object* l_Lean_instInhabitedPrefixTreeNode___closed__1;
 lean_object* l_Lean_PrefixTreeNode_foldMatchingM_find_match__1___rarg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_foldMatchingM_find_match__1(lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_insert_insertEmpty___rarg(lean_object*, lean_object*);
@@ -75,32 +73,28 @@ lean_object* l_Lean_PrefixTreeNode_foldMatchingM(lean_object*, lean_object*, lea
 lean_object* l_Lean_PrefixTree_foldMatchingM___rarg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_insert(lean_object*, lean_object*);
 lean_object* l_Lean_PrefixTreeNode_foldMatchingM_find(lean_object*, lean_object*, lean_object*, lean_object*);
-static lean_object* _init_l_Lean_instInhabitedPrefixTreeNode___closed__1() {
-_start:
-{
-lean_object* x_1; lean_object* x_2; lean_object* x_3; 
-x_1 = lean_box(0);
-x_2 = lean_box(0);
-x_3 = lean_alloc_ctor(0, 2, 0);
-lean_ctor_set(x_3, 0, x_1);
-lean_ctor_set(x_3, 1, x_2);
-return x_3;
-}
-}
 lean_object* l_Lean_instInhabitedPrefixTreeNode(lean_object* x_1, lean_object* x_2) {
 _start:
 {
-lean_object* x_3; 
-x_3 = l_Lean_instInhabitedPrefixTreeNode___closed__1;
-return x_3;
+lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+x_3 = lean_box(0);
+x_4 = lean_box(0);
+x_5 = lean_alloc_ctor(0, 2, 0);
+lean_ctor_set(x_5, 0, x_3);
+lean_ctor_set(x_5, 1, x_4);
+return x_5;
 }
 }
 lean_object* l_Lean_PrefixTreeNode_empty(lean_object* x_1, lean_object* x_2) {
 _start:
 {
-lean_object* x_3; 
-x_3 = l_Lean_instInhabitedPrefixTreeNode___closed__1;
-return x_3;
+lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+x_3 = lean_box(0);
+x_4 = lean_box(0);
+x_5 = lean_alloc_ctor(0, 2, 0);
+lean_ctor_set(x_5, 0, x_3);
+lean_ctor_set(x_5, 1, x_4);
+return x_5;
 }
 }
 lean_object* l_Lean_PrefixTreeNode_insert_insertEmpty_match__1___rarg(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
@@ -753,19 +747,11 @@ x_5 = lean_alloc_closure((void*)(l_Lean_PrefixTreeNode_foldMatchingM___rarg), 6,
 return x_5;
 }
 }
-static lean_object* _init_l_Lean_PrefixTree_empty___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_Lean_PrefixTreeNode_empty(lean_box(0), lean_box(0));
-return x_1;
-}
-}
 lean_object* l_Lean_PrefixTree_empty(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
 _start:
 {
 lean_object* x_4; 
-x_4 = l_Lean_PrefixTree_empty___closed__1;
+x_4 = l_Lean_PrefixTreeNode_empty(lean_box(0), lean_box(0));
 return x_4;
 }
 }
@@ -782,7 +768,7 @@ lean_object* l_Lean_instInhabitedPrefixTree(lean_object* x_1, lean_object* x_2, 
 _start:
 {
 lean_object* x_4; 
-x_4 = l_Lean_PrefixTree_empty___closed__1;
+x_4 = l_Lean_PrefixTreeNode_empty(lean_box(0), lean_box(0));
 return x_4;
 }
 }
@@ -799,7 +785,7 @@ lean_object* l_Lean_instEmptyCollectionPrefixTree(lean_object* x_1, lean_object*
 _start:
 {
 lean_object* x_4; 
-x_4 = l_Lean_PrefixTree_empty___closed__1;
+x_4 = l_Lean_PrefixTreeNode_empty(lean_box(0), lean_box(0));
 return x_4;
 }
 }
@@ -1053,10 +1039,6 @@ lean_dec_ref(res);
 res = initialize_Std_Data_RBMap(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_Lean_instInhabitedPrefixTreeNode___closed__1 = _init_l_Lean_instInhabitedPrefixTreeNode___closed__1();
-lean_mark_persistent(l_Lean_instInhabitedPrefixTreeNode___closed__1);
-l_Lean_PrefixTree_empty___closed__1 = _init_l_Lean_PrefixTree_empty___closed__1();
-lean_mark_persistent(l_Lean_PrefixTree_empty___closed__1);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus

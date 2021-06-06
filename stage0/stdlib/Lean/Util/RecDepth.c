@@ -14,18 +14,12 @@
 extern "C" {
 #endif
 lean_object* lean_name_mk_string(lean_object*, lean_object*);
-extern lean_object* l_Lean_instInhabitedParserDescr___closed__1;
-lean_object* l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__1;
 lean_object* l_Lean_maxRecDepth;
-lean_object* l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__2;
-lean_object* l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__4;
 lean_object* l_Lean_Option_register___at_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____spec__1(lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_Option_register___at_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____spec__1___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* lean_register_option(lean_object*, lean_object*, lean_object*);
-lean_object* l_Lean_maxRecDepth___closed__1;
 lean_object* l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4_(lean_object*);
 extern lean_object* l_Lean_defaultMaxRecDepth;
-lean_object* l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__3;
 lean_object* l_Lean_Option_register___at_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____spec__1(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
 _start:
 {
@@ -101,54 +95,23 @@ return x_19;
 }
 }
 }
-static lean_object* _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_mk_string("maxRecDepth");
-return x_1;
-}
-}
-static lean_object* _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__2() {
-_start:
-{
-lean_object* x_1; lean_object* x_2; lean_object* x_3; 
-x_1 = lean_box(0);
-x_2 = l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__1;
-x_3 = lean_name_mk_string(x_1, x_2);
-return x_3;
-}
-}
-static lean_object* _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__3() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_mk_string("maximum recursion depth for many Lean procedures");
-return x_1;
-}
-}
-static lean_object* _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__4() {
-_start:
-{
-lean_object* x_1; lean_object* x_2; lean_object* x_3; lean_object* x_4; 
-x_1 = l_Lean_defaultMaxRecDepth;
-x_2 = l_Lean_instInhabitedParserDescr___closed__1;
-x_3 = l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__3;
-x_4 = lean_alloc_ctor(0, 3, 0);
-lean_ctor_set(x_4, 0, x_1);
-lean_ctor_set(x_4, 1, x_2);
-lean_ctor_set(x_4, 2, x_3);
-return x_4;
-}
-}
 lean_object* l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4_(lean_object* x_1) {
 _start:
 {
-lean_object* x_2; lean_object* x_3; lean_object* x_4; 
-x_2 = l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__2;
-x_3 = l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__4;
-x_4 = l_Lean_Option_register___at_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____spec__1(x_2, x_3, x_1);
-return x_4;
+lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; lean_object* x_6; lean_object* x_7; lean_object* x_8; lean_object* x_9; 
+x_2 = lean_box(0);
+x_3 = lean_mk_string("maxRecDepth");
+x_4 = lean_name_mk_string(x_2, x_3);
+x_5 = l_Lean_defaultMaxRecDepth;
+x_6 = lean_mk_string("");
+x_7 = lean_mk_string("maximum recursion depth for many Lean procedures");
+x_8 = lean_alloc_ctor(0, 3, 0);
+lean_ctor_set(x_8, 0, x_5);
+lean_ctor_set(x_8, 1, x_6);
+lean_ctor_set(x_8, 2, x_7);
+x_9 = l_Lean_Option_register___at_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____spec__1(x_4, x_8, x_1);
+lean_dec(x_8);
+return x_9;
 }
 }
 lean_object* l_Lean_Option_register___at_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____spec__1___boxed(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
@@ -158,18 +121,6 @@ lean_object* x_4;
 x_4 = l_Lean_Option_register___at_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____spec__1(x_1, x_2, x_3);
 lean_dec(x_2);
 return x_4;
-}
-}
-static lean_object* _init_l_Lean_maxRecDepth___closed__1() {
-_start:
-{
-lean_object* x_1; lean_object* x_2; lean_object* x_3; 
-x_1 = lean_box(0);
-x_2 = lean_unsigned_to_nat(0u);
-x_3 = lean_alloc_ctor(0, 2, 0);
-lean_ctor_set(x_3, 0, x_1);
-lean_ctor_set(x_3, 1, x_2);
-return x_3;
 }
 }
 lean_object* initialize_Init(lean_object*);
@@ -185,16 +136,6 @@ lean_dec_ref(res);
 res = initialize_Lean_Data_Options(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__1 = _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__1();
-lean_mark_persistent(l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__1);
-l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__2 = _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__2();
-lean_mark_persistent(l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__2);
-l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__3 = _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__3();
-lean_mark_persistent(l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__3);
-l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__4 = _init_l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__4();
-lean_mark_persistent(l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4____closed__4);
-l_Lean_maxRecDepth___closed__1 = _init_l_Lean_maxRecDepth___closed__1();
-lean_mark_persistent(l_Lean_maxRecDepth___closed__1);
 res = l_Lean_initFn____x40_Lean_Util_RecDepth___hyg_4_(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 l_Lean_maxRecDepth = lean_io_result_get_value(res);

@@ -13,6 +13,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+lean_object* l_tryFinally___rarg___lambda__1___boxed(lean_object*);
 lean_object* l_StateT_failure___rarg___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* l_StateT_instMonadStateT___rarg___lambda__7(lean_object*, lean_object*);
 lean_object* l_StateT_set(lean_object*, lean_object*);
@@ -80,7 +81,6 @@ lean_object* l_instMonadStateOfStateT___rarg(lean_object*);
 lean_object* l_StateT_orElse(lean_object*, lean_object*);
 lean_object* l_StateT_tryFinally_match__2___rarg(lean_object*, lean_object*);
 lean_object* l_StateT_instAlternativeStateT___rarg(lean_object*, lean_object*);
-extern lean_object* l_tryFinally___rarg___closed__1;
 lean_object* l_StateT_lift___rarg___lambda__1(lean_object*, lean_object*, lean_object*);
 lean_object* l_StateT_get(lean_object*, lean_object*);
 lean_object* l_StateT_run___rarg(lean_object* x_1, lean_object* x_2) {
@@ -107,7 +107,7 @@ x_5 = lean_ctor_get(x_1, 0);
 lean_inc(x_5);
 lean_dec(x_1);
 x_6 = lean_apply_1(x_3, x_4);
-x_7 = l_tryFinally___rarg___closed__1;
+x_7 = lean_alloc_closure((void*)(l_tryFinally___rarg___lambda__1___boxed), 1, 0);
 x_8 = lean_apply_4(x_5, lean_box(0), lean_box(0), x_7, x_6);
 return x_8;
 }

@@ -13,7 +13,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-lean_object* l_Lean_instBEqOccurrences___closed__1;
 lean_object* l_Lean_Occurrences_isAll_match__1(lean_object*);
 lean_object* l_Lean_Occurrences_contains___boxed(lean_object*, lean_object*);
 lean_object* l_List_elem___at_Lean_Occurrences_contains___spec__1___boxed(lean_object*, lean_object*);
@@ -254,19 +253,11 @@ x_4 = lean_box(x_3);
 return x_4;
 }
 }
-static lean_object* _init_l_Lean_instBEqOccurrences___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l___private_Lean_Data_Occurrences_0__Lean_beqOccurrences____x40_Lean_Data_Occurrences___hyg_31____boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_Lean_instBEqOccurrences() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_Lean_instBEqOccurrences___closed__1;
+x_1 = lean_alloc_closure((void*)(l___private_Lean_Data_Occurrences_0__Lean_beqOccurrences____x40_Lean_Data_Occurrences___hyg_31____boxed), 2, 0);
 return x_1;
 }
 }
@@ -470,8 +461,6 @@ if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 l_Lean_instInhabitedOccurrences = _init_l_Lean_instInhabitedOccurrences();
 lean_mark_persistent(l_Lean_instInhabitedOccurrences);
-l_Lean_instBEqOccurrences___closed__1 = _init_l_Lean_instBEqOccurrences___closed__1();
-lean_mark_persistent(l_Lean_instBEqOccurrences___closed__1);
 l_Lean_instBEqOccurrences = _init_l_Lean_instBEqOccurrences();
 lean_mark_persistent(l_Lean_instBEqOccurrences);
 return lean_io_result_mk_ok(lean_box(0));

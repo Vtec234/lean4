@@ -18,7 +18,6 @@ uint8_t l_floatDecLe(double, double);
 lean_object* l_instBEqFloat;
 double log2(double);
 lean_object* l_Float_cosh___boxed(lean_object*);
-lean_object* l_instAddFloat___closed__1;
 double sin(double);
 double asin(double);
 lean_object* l_instLTFloat;
@@ -29,7 +28,6 @@ double lean_float_of_scientific(lean_object*, uint8_t, lean_object*);
 double tanh(double);
 double lean_float_of_nat(lean_object*);
 double l_Nat_toFloat(lean_object*);
-lean_object* l_instSubFloat___closed__1;
 lean_object* l_Float_cos___boxed(lean_object*);
 lean_object* l_instReprFloat(double, lean_object*);
 extern uint8_t l_instDecidableTrue;
@@ -48,11 +46,9 @@ lean_object* l_Float_ofInt_match__1___rarg(lean_object*, lean_object*, lean_obje
 lean_object* l_Float_atanh___boxed(lean_object*);
 lean_object* l_instReprAtomFloat;
 double atanh(double);
-lean_object* l_floatSpec___closed__1;
 uint8_t l_Float_decLe(double, double);
 lean_object* l_instNegFloat;
 double sinh(double);
-lean_object* l_floatSpec___closed__2;
 lean_object* l_Float_toUInt16___boxed(lean_object*);
 lean_object* l_Float_asin___boxed(lean_object*);
 lean_object* l_instInhabitedFloat;
@@ -80,13 +76,11 @@ double l_Float_add(double, double);
 double log(double);
 lean_object* l_Float_neg___boxed(lean_object*);
 lean_object* l_Float_log___boxed(lean_object*);
-lean_object* l_instPowFloat___closed__1;
 lean_object* l_instDivFloat;
 lean_object* l_instLEFloat;
 double log10(double);
 lean_object* l_Float_ofInt___boxed(lean_object*);
 lean_object* l_Float_atan___boxed(lean_object*);
-lean_object* l_instInhabitedFloat___closed__1;
 lean_object* l_Float_toUSize___boxed(lean_object*);
 double atan(double);
 double atan2(double, double);
@@ -95,19 +89,15 @@ double cos(double);
 lean_object* l_Float_exp2___boxed(lean_object*);
 lean_object* l_instSubFloat;
 lean_object* l_Nat_toFloat___boxed(lean_object*);
-lean_object* l_instToStringFloat___closed__1;
 double pow(double, double);
 lean_object* l_Float_decLe___boxed(lean_object*, lean_object*);
 double asinh(double);
-lean_object* l_instDivFloat___closed__1;
 double acosh(double);
 uint8_t lean_int_dec_lt(lean_object*, lean_object*);
 lean_object* l_Float_atan2___boxed(lean_object*, lean_object*);
-extern lean_object* l_Int_instInhabitedInt___closed__1;
 double acos(double);
 lean_object* l_Float_sub___boxed(lean_object*, lean_object*);
 double l_Float_neg(double);
-lean_object* l_instMulFloat___closed__1;
 lean_object* lean_nat_abs(lean_object*);
 double cbrt(double);
 lean_object* l_Float_sqrt___boxed(lean_object*);
@@ -119,14 +109,13 @@ lean_object* l_Float_toString___boxed(lean_object*);
 double exp2(double);
 lean_object* l_instMulFloat;
 lean_object* l_Float_beq___boxed(lean_object*, lean_object*);
-lean_object* l_instNegFloat___closed__1;
 double l_Float_ofInt(lean_object*);
-lean_object* l_instBEqFloat___closed__1;
 lean_object* l_Float_exp___boxed(lean_object*);
 lean_object* l_Float_add___boxed(lean_object*, lean_object*);
 uint64_t l_Float_toUInt64(double);
 lean_object* l_instPowFloat;
 uint32_t l_Float_toUInt32(double);
+lean_object* lean_nat_to_int(lean_object*);
 lean_object* l_floatDecLt___boxed(lean_object*, lean_object*);
 uint8_t l_Float_toUInt8(double);
 lean_object* l_Float_log2___boxed(lean_object*);
@@ -142,33 +131,18 @@ x_3 = l_instDecidableTrue;
 return x_3;
 }
 }
-static lean_object* _init_l_floatSpec___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_floatSpec___elambda__1___boxed), 2, 0);
-return x_1;
-}
-}
-static lean_object* _init_l_floatSpec___closed__2() {
+static lean_object* _init_l_floatSpec() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; lean_object* x_3; 
 x_1 = lean_box(0);
-x_2 = l_floatSpec___closed__1;
+x_2 = lean_alloc_closure((void*)(l_floatSpec___elambda__1___boxed), 2, 0);
+lean_inc(x_2);
 x_3 = lean_alloc_ctor(0, 3, 0);
 lean_ctor_set(x_3, 0, x_1);
 lean_ctor_set(x_3, 1, x_2);
 lean_ctor_set(x_3, 2, x_2);
 return x_3;
-}
-}
-static lean_object* _init_l_floatSpec() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_floatSpec___closed__2;
-return x_1;
 }
 }
 lean_object* l_floatSpec___elambda__1___boxed(lean_object* x_1, lean_object* x_2) {
@@ -182,7 +156,7 @@ x_4 = lean_box(x_3);
 return x_4;
 }
 }
-static lean_object* _init_l_instInhabitedFloat___closed__1() {
+static lean_object* _init_l_instInhabitedFloat() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; 
@@ -190,14 +164,6 @@ x_1 = lean_box(0);
 x_2 = lean_alloc_ctor(0, 1, 0);
 lean_ctor_set(x_2, 0, x_1);
 return x_2;
-}
-}
-static lean_object* _init_l_instInhabitedFloat() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_instInhabitedFloat___closed__1;
-return x_1;
 }
 }
 lean_object* l_Float_ofNat___boxed(lean_object* x_1) {
@@ -276,27 +242,29 @@ return x_4;
 lean_object* l_Float_ofInt_match__1___rarg(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
 _start:
 {
-lean_object* x_4; uint8_t x_5; 
-x_4 = l_Int_instInhabitedInt___closed__1;
-x_5 = lean_int_dec_lt(x_1, x_4);
-if (x_5 == 0)
+lean_object* x_4; lean_object* x_5; uint8_t x_6; 
+x_4 = lean_unsigned_to_nat(0u);
+x_5 = lean_nat_to_int(x_4);
+x_6 = lean_int_dec_lt(x_1, x_5);
+lean_dec(x_5);
+if (x_6 == 0)
 {
-lean_object* x_6; lean_object* x_7; 
+lean_object* x_7; lean_object* x_8; 
 lean_dec(x_3);
-x_6 = lean_nat_abs(x_1);
-x_7 = lean_apply_1(x_2, x_6);
-return x_7;
+x_7 = lean_nat_abs(x_1);
+x_8 = lean_apply_1(x_2, x_7);
+return x_8;
 }
 else
 {
-lean_object* x_8; lean_object* x_9; lean_object* x_10; lean_object* x_11; 
+lean_object* x_9; lean_object* x_10; lean_object* x_11; lean_object* x_12; 
 lean_dec(x_2);
-x_8 = lean_nat_abs(x_1);
-x_9 = lean_unsigned_to_nat(1u);
-x_10 = lean_nat_sub(x_8, x_9);
-lean_dec(x_8);
-x_11 = lean_apply_1(x_3, x_10);
-return x_11;
+x_9 = lean_nat_abs(x_1);
+x_10 = lean_unsigned_to_nat(1u);
+x_11 = lean_nat_sub(x_9, x_10);
+lean_dec(x_9);
+x_12 = lean_apply_1(x_3, x_11);
+return x_12;
 }
 }
 }
@@ -320,30 +288,32 @@ return x_4;
 double l_Float_ofInt(lean_object* x_1) {
 _start:
 {
-lean_object* x_2; uint8_t x_3; 
-x_2 = l_Int_instInhabitedInt___closed__1;
-x_3 = lean_int_dec_lt(x_1, x_2);
-if (x_3 == 0)
+lean_object* x_2; lean_object* x_3; uint8_t x_4; 
+x_2 = lean_unsigned_to_nat(0u);
+x_3 = lean_nat_to_int(x_2);
+x_4 = lean_int_dec_lt(x_1, x_3);
+lean_dec(x_3);
+if (x_4 == 0)
 {
-lean_object* x_4; double x_5; 
-x_4 = lean_nat_abs(x_1);
-x_5 = lean_float_of_nat(x_4);
-lean_dec(x_4);
-return x_5;
+lean_object* x_5; double x_6; 
+x_5 = lean_nat_abs(x_1);
+x_6 = lean_float_of_nat(x_5);
+lean_dec(x_5);
+return x_6;
 }
 else
 {
-lean_object* x_6; lean_object* x_7; lean_object* x_8; lean_object* x_9; double x_10; double x_11; 
-x_6 = lean_nat_abs(x_1);
-x_7 = lean_unsigned_to_nat(1u);
-x_8 = lean_nat_sub(x_6, x_7);
-lean_dec(x_6);
-x_9 = lean_nat_add(x_8, x_7);
-lean_dec(x_8);
-x_10 = lean_float_of_nat(x_9);
+lean_object* x_7; lean_object* x_8; lean_object* x_9; lean_object* x_10; double x_11; double x_12; 
+x_7 = lean_nat_abs(x_1);
+x_8 = lean_unsigned_to_nat(1u);
+x_9 = lean_nat_sub(x_7, x_8);
+lean_dec(x_7);
+x_10 = lean_nat_add(x_9, x_8);
 lean_dec(x_9);
-x_11 = (- x_10);
-return x_11;
+x_11 = lean_float_of_nat(x_10);
+lean_dec(x_10);
+x_12 = (- x_11);
+return x_12;
 }
 }
 }
@@ -375,7 +345,7 @@ x_3 = lean_box_float(x_2);
 return x_3;
 }
 }
-static lean_object* _init_l_instAddFloat___closed__1() {
+static lean_object* _init_l_instAddFloat() {
 _start:
 {
 lean_object* x_1; 
@@ -383,15 +353,7 @@ x_1 = lean_alloc_closure((void*)(l_Float_add___boxed), 2, 0);
 return x_1;
 }
 }
-static lean_object* _init_l_instAddFloat() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_instAddFloat___closed__1;
-return x_1;
-}
-}
-static lean_object* _init_l_instSubFloat___closed__1() {
+static lean_object* _init_l_instSubFloat() {
 _start:
 {
 lean_object* x_1; 
@@ -399,15 +361,7 @@ x_1 = lean_alloc_closure((void*)(l_Float_sub___boxed), 2, 0);
 return x_1;
 }
 }
-static lean_object* _init_l_instSubFloat() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_instSubFloat___closed__1;
-return x_1;
-}
-}
-static lean_object* _init_l_instMulFloat___closed__1() {
+static lean_object* _init_l_instMulFloat() {
 _start:
 {
 lean_object* x_1; 
@@ -415,15 +369,7 @@ x_1 = lean_alloc_closure((void*)(l_Float_mul___boxed), 2, 0);
 return x_1;
 }
 }
-static lean_object* _init_l_instMulFloat() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_instMulFloat___closed__1;
-return x_1;
-}
-}
-static lean_object* _init_l_instDivFloat___closed__1() {
+static lean_object* _init_l_instDivFloat() {
 _start:
 {
 lean_object* x_1; 
@@ -431,27 +377,11 @@ x_1 = lean_alloc_closure((void*)(l_Float_div___boxed), 2, 0);
 return x_1;
 }
 }
-static lean_object* _init_l_instDivFloat() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_instDivFloat___closed__1;
-return x_1;
-}
-}
-static lean_object* _init_l_instNegFloat___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_Float_neg___boxed), 1, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_instNegFloat() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_instNegFloat___closed__1;
+x_1 = lean_alloc_closure((void*)(l_Float_neg___boxed), 1, 0);
 return x_1;
 }
 }
@@ -484,19 +414,11 @@ x_6 = lean_box(x_5);
 return x_6;
 }
 }
-static lean_object* _init_l_instBEqFloat___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_Float_beq___boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_instBEqFloat() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_instBEqFloat___closed__1;
+x_1 = lean_alloc_closure((void*)(l_Float_beq___boxed), 2, 0);
 return x_1;
 }
 }
@@ -633,19 +555,11 @@ x_4 = lean_box_usize(x_3);
 return x_4;
 }
 }
-static lean_object* _init_l_instToStringFloat___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_Float_toString___boxed), 1, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_instToStringFloat() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_instToStringFloat___closed__1;
+x_1 = lean_alloc_closure((void*)(l_Float_toString___boxed), 1, 0);
 return x_1;
 }
 }
@@ -931,19 +845,11 @@ x_4 = lean_box_float(x_3);
 return x_4;
 }
 }
-static lean_object* _init_l_instPowFloat___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_Float_pow___boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_instPowFloat() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_instPowFloat___closed__1;
+x_1 = lean_alloc_closure((void*)(l_Float_pow___boxed), 2, 0);
 return x_1;
 }
 }
@@ -975,52 +881,30 @@ lean_dec_ref(res);
 res = initialize_Init_Data_ToString_Basic(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_floatSpec___closed__1 = _init_l_floatSpec___closed__1();
-lean_mark_persistent(l_floatSpec___closed__1);
-l_floatSpec___closed__2 = _init_l_floatSpec___closed__2();
-lean_mark_persistent(l_floatSpec___closed__2);
 l_floatSpec = _init_l_floatSpec();
 lean_mark_persistent(l_floatSpec);
-l_instInhabitedFloat___closed__1 = _init_l_instInhabitedFloat___closed__1();
-lean_mark_persistent(l_instInhabitedFloat___closed__1);
 l_instInhabitedFloat = _init_l_instInhabitedFloat();
 lean_mark_persistent(l_instInhabitedFloat);
-l_instAddFloat___closed__1 = _init_l_instAddFloat___closed__1();
-lean_mark_persistent(l_instAddFloat___closed__1);
 l_instAddFloat = _init_l_instAddFloat();
 lean_mark_persistent(l_instAddFloat);
-l_instSubFloat___closed__1 = _init_l_instSubFloat___closed__1();
-lean_mark_persistent(l_instSubFloat___closed__1);
 l_instSubFloat = _init_l_instSubFloat();
 lean_mark_persistent(l_instSubFloat);
-l_instMulFloat___closed__1 = _init_l_instMulFloat___closed__1();
-lean_mark_persistent(l_instMulFloat___closed__1);
 l_instMulFloat = _init_l_instMulFloat();
 lean_mark_persistent(l_instMulFloat);
-l_instDivFloat___closed__1 = _init_l_instDivFloat___closed__1();
-lean_mark_persistent(l_instDivFloat___closed__1);
 l_instDivFloat = _init_l_instDivFloat();
 lean_mark_persistent(l_instDivFloat);
-l_instNegFloat___closed__1 = _init_l_instNegFloat___closed__1();
-lean_mark_persistent(l_instNegFloat___closed__1);
 l_instNegFloat = _init_l_instNegFloat();
 lean_mark_persistent(l_instNegFloat);
 l_instLTFloat = _init_l_instLTFloat();
 lean_mark_persistent(l_instLTFloat);
 l_instLEFloat = _init_l_instLEFloat();
 lean_mark_persistent(l_instLEFloat);
-l_instBEqFloat___closed__1 = _init_l_instBEqFloat___closed__1();
-lean_mark_persistent(l_instBEqFloat___closed__1);
 l_instBEqFloat = _init_l_instBEqFloat();
 lean_mark_persistent(l_instBEqFloat);
-l_instToStringFloat___closed__1 = _init_l_instToStringFloat___closed__1();
-lean_mark_persistent(l_instToStringFloat___closed__1);
 l_instToStringFloat = _init_l_instToStringFloat();
 lean_mark_persistent(l_instToStringFloat);
 l_instReprAtomFloat = _init_l_instReprAtomFloat();
 lean_mark_persistent(l_instReprAtomFloat);
-l_instPowFloat___closed__1 = _init_l_instPowFloat___closed__1();
-lean_mark_persistent(l_instPowFloat___closed__1);
 l_instPowFloat = _init_l_instPowFloat();
 lean_mark_persistent(l_instPowFloat);
 return lean_io_result_mk_ok(lean_box(0));

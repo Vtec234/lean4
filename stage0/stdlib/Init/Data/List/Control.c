@@ -79,7 +79,6 @@ lean_object* l_List_filterMapM_loop_match__1___rarg(lean_object*, lean_object*, 
 lean_object* l_List_filterMapM_loop___rarg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_List_mapM_match__1(lean_object*, lean_object*);
 lean_object* l_List_forM___rarg(lean_object*, lean_object*, lean_object*, lean_object*);
-lean_object* l_List_mapA___rarg___closed__1;
 lean_object* l_List_forIn_loop_match__2(lean_object*, lean_object*, lean_object*);
 lean_object* l_List_filterRevM(lean_object*);
 lean_object* l_List_filterM(lean_object*);
@@ -219,14 +218,6 @@ lean_ctor_set(x_3, 1, x_2);
 return x_3;
 }
 }
-static lean_object* _init_l_List_mapA___rarg___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_List_mapA___rarg___lambda__1), 2, 0);
-return x_1;
-}
-}
 lean_object* l_List_mapA___rarg(lean_object* x_1, lean_object* x_2, lean_object* x_3, lean_object* x_4, lean_object* x_5) {
 _start:
 {
@@ -258,7 +249,7 @@ lean_inc(x_13);
 lean_dec(x_12);
 lean_inc(x_4);
 x_14 = lean_apply_1(x_4, x_9);
-x_15 = l_List_mapA___rarg___closed__1;
+x_15 = lean_alloc_closure((void*)(l_List_mapA___rarg___lambda__1), 2, 0);
 x_16 = lean_apply_4(x_13, lean_box(0), lean_box(0), x_15, x_14);
 x_17 = l_List_mapA___rarg(x_1, lean_box(0), lean_box(0), x_4, x_10);
 x_18 = lean_apply_4(x_11, lean_box(0), lean_box(0), x_16, x_17);
@@ -1563,8 +1554,6 @@ lean_dec_ref(res);
 res = initialize_Init_Data_List_Basic(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_List_mapA___rarg___closed__1 = _init_l_List_mapA___rarg___closed__1();
-lean_mark_persistent(l_List_mapA___rarg___closed__1);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus

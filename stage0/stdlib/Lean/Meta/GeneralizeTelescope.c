@@ -16,15 +16,16 @@ extern "C" {
 size_t l_USize_add(size_t, size_t);
 lean_object* l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux_match__2(lean_object*);
 lean_object* l_Lean_stringToMessageData(lean_object*);
+lean_object* lean_mk_empty_array_with_capacity(lean_object*);
 lean_object* l_Lean_throwError___at_Lean_Meta_whnf___spec__1(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_LocalDecl_userName(lean_object*);
+lean_object* lean_name_mk_string(lean_object*, lean_object*);
 lean_object* l_Lean_Meta_withLocalDecl___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__1___rarg___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* lean_array_uget(lean_object*, size_t);
 lean_object* l_Array_mapMUnsafe_map___at_Lean_Meta_generalizeTelescope___spec__1(size_t, size_t, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* lean_array_uset(lean_object*, size_t, lean_object*);
 lean_object* l_Lean_Meta_withLocalDecl___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__1(lean_object*);
 lean_object* l___private_Lean_Meta_Basic_0__Lean_Meta_withLocalDeclImp___rarg(lean_object*, uint8_t, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
-extern lean_object* l_Array_empty___closed__1;
 lean_object* lean_expr_instantiate1(lean_object*, lean_object*);
 lean_object* lean_array_push(lean_object*, lean_object*);
 lean_object* lean_array_get_size(lean_object*);
@@ -32,18 +33,14 @@ lean_object* l_Lean_MessageData_ofList(lean_object*);
 lean_object* l_Lean_Meta_isTypeCorrect(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 uint8_t l_USize_decLt(size_t, size_t);
 lean_object* lean_nat_add(lean_object*, lean_object*);
-lean_object* l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__1;
 lean_object* lean_array_fget(lean_object*, lean_object*);
 lean_object* l___private_Lean_CoreM_0__Lean_Core_mkFreshNameImp(lean_object*, lean_object*, lean_object*, lean_object*);
-lean_object* l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__2;
 lean_object* l_Array_mapMUnsafe_map___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__2(size_t, size_t, lean_object*);
-extern lean_object* l_Lean_Meta_mkArrow___closed__2;
 lean_object* l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__1(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* lean_array_fset(lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux_match__1___rarg(lean_object*, lean_object*, lean_object*);
 lean_object* lean_array_to_list(lean_object*, lean_object*);
 lean_object* l_Lean_Meta_generalizeTelescope___rarg___boxed__const__1;
-extern lean_object* l_Lean_KernelException_toMessageData___closed__15;
 size_t lean_usize_of_nat(lean_object*);
 lean_object* l_Array_mapMUnsafe_map___at_Lean_Meta_generalizeTelescope___spec__1___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_Meta_GeneralizeTelescope_updateTypes_match__1___rarg(lean_object*, lean_object*);
@@ -561,40 +558,25 @@ return x_22;
 lean_object* l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__2(lean_object* x_1, lean_object* x_2, lean_object* x_3, lean_object* x_4, lean_object* x_5, lean_object* x_6, lean_object* x_7, lean_object* x_8, lean_object* x_9, lean_object* x_10, lean_object* x_11, lean_object* x_12) {
 _start:
 {
-lean_object* x_13; lean_object* x_14; lean_object* x_15; lean_object* x_16; lean_object* x_17; uint8_t x_18; lean_object* x_19; 
-x_13 = l_Lean_Meta_mkArrow___closed__2;
-x_14 = l___private_Lean_CoreM_0__Lean_Core_mkFreshNameImp(x_13, x_10, x_11, x_12);
-x_15 = lean_ctor_get(x_14, 0);
-lean_inc(x_15);
-x_16 = lean_ctor_get(x_14, 1);
-lean_inc(x_16);
-lean_dec(x_14);
-x_17 = lean_alloc_closure((void*)(l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__1___boxed), 11, 5);
-lean_closure_set(x_17, 0, x_1);
-lean_closure_set(x_17, 1, x_2);
-lean_closure_set(x_17, 2, x_3);
-lean_closure_set(x_17, 3, x_4);
-lean_closure_set(x_17, 4, x_5);
-x_18 = 0;
-x_19 = l_Lean_Meta_withLocalDecl___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__1___rarg(x_15, x_18, x_6, x_17, x_8, x_9, x_10, x_11, x_16);
-return x_19;
-}
-}
-static lean_object* _init_l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_mk_string("failed to create telescope generalizing ");
-return x_1;
-}
-}
-static lean_object* _init_l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__2() {
-_start:
-{
-lean_object* x_1; lean_object* x_2; 
-x_1 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__1;
-x_2 = l_Lean_stringToMessageData(x_1);
-return x_2;
+lean_object* x_13; lean_object* x_14; lean_object* x_15; lean_object* x_16; lean_object* x_17; lean_object* x_18; lean_object* x_19; uint8_t x_20; lean_object* x_21; 
+x_13 = lean_box(0);
+x_14 = lean_mk_string("x");
+x_15 = lean_name_mk_string(x_13, x_14);
+x_16 = l___private_Lean_CoreM_0__Lean_Core_mkFreshNameImp(x_15, x_10, x_11, x_12);
+x_17 = lean_ctor_get(x_16, 0);
+lean_inc(x_17);
+x_18 = lean_ctor_get(x_16, 1);
+lean_inc(x_18);
+lean_dec(x_16);
+x_19 = lean_alloc_closure((void*)(l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__1___boxed), 11, 5);
+lean_closure_set(x_19, 0, x_1);
+lean_closure_set(x_19, 1, x_2);
+lean_closure_set(x_19, 2, x_3);
+lean_closure_set(x_19, 3, x_4);
+lean_closure_set(x_19, 4, x_5);
+x_20 = 0;
+x_21 = l_Lean_Meta_withLocalDecl___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__1___rarg(x_17, x_20, x_6, x_19, x_8, x_9, x_10, x_11, x_18);
+return x_21;
 }
 }
 lean_object* l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg(lean_object* x_1, lean_object* x_2, lean_object* x_3, lean_object* x_4, lean_object* x_5, lean_object* x_6, lean_object* x_7, lean_object* x_8, lean_object* x_9) {
@@ -731,7 +713,7 @@ x_40 = lean_unbox(x_39);
 lean_dec(x_39);
 if (x_40 == 0)
 {
-lean_object* x_41; size_t x_42; size_t x_43; lean_object* x_44; lean_object* x_45; lean_object* x_46; lean_object* x_47; lean_object* x_48; lean_object* x_49; lean_object* x_50; lean_object* x_51; lean_object* x_52; lean_object* x_53; lean_object* x_54; uint8_t x_55; 
+lean_object* x_41; lean_object* x_42; lean_object* x_43; size_t x_44; size_t x_45; lean_object* x_46; lean_object* x_47; lean_object* x_48; lean_object* x_49; lean_object* x_50; lean_object* x_51; lean_object* x_52; lean_object* x_53; lean_object* x_54; lean_object* x_55; lean_object* x_56; uint8_t x_57; 
 lean_dec(x_37);
 lean_dec(x_14);
 lean_dec(x_4);
@@ -740,155 +722,163 @@ lean_dec(x_1);
 x_41 = lean_ctor_get(x_38, 1);
 lean_inc(x_41);
 lean_dec(x_38);
-x_42 = lean_usize_of_nat(x_10);
+x_42 = lean_mk_string("failed to create telescope generalizing ");
+x_43 = l_Lean_stringToMessageData(x_42);
+lean_dec(x_42);
+x_44 = lean_usize_of_nat(x_10);
 lean_dec(x_10);
-x_43 = 0;
-x_44 = x_2;
-x_45 = l_Array_mapMUnsafe_map___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__2(x_42, x_43, x_44);
-x_46 = x_45;
-x_47 = lean_array_to_list(lean_box(0), x_46);
-x_48 = l_List_map___at_Lean_MessageData_instCoeListExprMessageData___spec__1(x_47);
-x_49 = l_Lean_MessageData_ofList(x_48);
-lean_dec(x_48);
-x_50 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__2;
-x_51 = lean_alloc_ctor(10, 2, 0);
-lean_ctor_set(x_51, 0, x_50);
-lean_ctor_set(x_51, 1, x_49);
-x_52 = l_Lean_KernelException_toMessageData___closed__15;
-x_53 = lean_alloc_ctor(10, 2, 0);
-lean_ctor_set(x_53, 0, x_51);
-lean_ctor_set(x_53, 1, x_52);
-x_54 = l_Lean_throwError___at_Lean_Meta_whnf___spec__1(x_53, x_5, x_6, x_7, x_8, x_41);
+x_45 = 0;
+x_46 = x_2;
+x_47 = l_Array_mapMUnsafe_map___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__2(x_44, x_45, x_46);
+x_48 = x_47;
+x_49 = lean_array_to_list(lean_box(0), x_48);
+x_50 = l_List_map___at_Lean_MessageData_instCoeListExprMessageData___spec__1(x_49);
+x_51 = l_Lean_MessageData_ofList(x_50);
+lean_dec(x_50);
+x_52 = lean_alloc_ctor(10, 2, 0);
+lean_ctor_set(x_52, 0, x_43);
+lean_ctor_set(x_52, 1, x_51);
+x_53 = lean_mk_string("");
+x_54 = l_Lean_stringToMessageData(x_53);
+lean_dec(x_53);
+x_55 = lean_alloc_ctor(10, 2, 0);
+lean_ctor_set(x_55, 0, x_52);
+lean_ctor_set(x_55, 1, x_54);
+x_56 = l_Lean_throwError___at_Lean_Meta_whnf___spec__1(x_55, x_5, x_6, x_7, x_8, x_41);
 lean_dec(x_8);
 lean_dec(x_7);
 lean_dec(x_6);
 lean_dec(x_5);
-x_55 = !lean_is_exclusive(x_54);
-if (x_55 == 0)
+x_57 = !lean_is_exclusive(x_56);
+if (x_57 == 0)
 {
-return x_54;
+return x_56;
 }
 else
 {
-lean_object* x_56; lean_object* x_57; lean_object* x_58; 
-x_56 = lean_ctor_get(x_54, 0);
-x_57 = lean_ctor_get(x_54, 1);
-lean_inc(x_57);
-lean_inc(x_56);
-lean_dec(x_54);
-x_58 = lean_alloc_ctor(1, 2, 0);
-lean_ctor_set(x_58, 0, x_56);
-lean_ctor_set(x_58, 1, x_57);
-return x_58;
-}
-}
-else
-{
-lean_object* x_59; lean_object* x_60; lean_object* x_61; 
-lean_dec(x_10);
-x_59 = lean_ctor_get(x_38, 1);
+lean_object* x_58; lean_object* x_59; lean_object* x_60; 
+x_58 = lean_ctor_get(x_56, 0);
+x_59 = lean_ctor_get(x_56, 1);
 lean_inc(x_59);
-lean_dec(x_38);
-x_60 = lean_box(0);
-x_61 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__2(x_3, x_14, x_2, x_4, x_1, x_37, x_60, x_5, x_6, x_7, x_8, x_59);
-return x_61;
-}
+lean_inc(x_58);
+lean_dec(x_56);
+x_60 = lean_alloc_ctor(1, 2, 0);
+lean_ctor_set(x_60, 0, x_58);
+lean_ctor_set(x_60, 1, x_59);
+return x_60;
 }
 }
 else
 {
-uint8_t x_62; 
-x_62 = lean_ctor_get_uint8(x_13, sizeof(void*)*2);
-if (x_62 == 0)
-{
-lean_object* x_63; lean_object* x_64; lean_object* x_65; 
+lean_object* x_61; lean_object* x_62; lean_object* x_63; 
 lean_dec(x_10);
-x_63 = lean_ctor_get(x_13, 1);
-lean_inc(x_63);
-lean_dec(x_13);
-x_64 = lean_box(0);
-x_65 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__2(x_3, x_14, x_2, x_4, x_1, x_63, x_64, x_5, x_6, x_7, x_8, x_9);
-return x_65;
+x_61 = lean_ctor_get(x_38, 1);
+lean_inc(x_61);
+lean_dec(x_38);
+x_62 = lean_box(0);
+x_63 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__2(x_3, x_14, x_2, x_4, x_1, x_37, x_62, x_5, x_6, x_7, x_8, x_61);
+return x_63;
+}
+}
 }
 else
 {
-lean_object* x_66; lean_object* x_67; lean_object* x_68; uint8_t x_69; 
-x_66 = lean_ctor_get(x_13, 1);
-lean_inc(x_66);
+uint8_t x_64; 
+x_64 = lean_ctor_get_uint8(x_13, sizeof(void*)*2);
+if (x_64 == 0)
+{
+lean_object* x_65; lean_object* x_66; lean_object* x_67; 
+lean_dec(x_10);
+x_65 = lean_ctor_get(x_13, 1);
+lean_inc(x_65);
+lean_dec(x_13);
+x_66 = lean_box(0);
+x_67 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__2(x_3, x_14, x_2, x_4, x_1, x_65, x_66, x_5, x_6, x_7, x_8, x_9);
+return x_67;
+}
+else
+{
+lean_object* x_68; lean_object* x_69; lean_object* x_70; uint8_t x_71; 
+x_68 = lean_ctor_get(x_13, 1);
+lean_inc(x_68);
 lean_dec(x_13);
 lean_inc(x_8);
 lean_inc(x_7);
 lean_inc(x_6);
 lean_inc(x_5);
-lean_inc(x_66);
-x_67 = l_Lean_Meta_isTypeCorrect(x_66, x_5, x_6, x_7, x_8, x_9);
-x_68 = lean_ctor_get(x_67, 0);
 lean_inc(x_68);
-x_69 = lean_unbox(x_68);
-lean_dec(x_68);
-if (x_69 == 0)
+x_69 = l_Lean_Meta_isTypeCorrect(x_68, x_5, x_6, x_7, x_8, x_9);
+x_70 = lean_ctor_get(x_69, 0);
+lean_inc(x_70);
+x_71 = lean_unbox(x_70);
+lean_dec(x_70);
+if (x_71 == 0)
 {
-lean_object* x_70; size_t x_71; size_t x_72; lean_object* x_73; lean_object* x_74; lean_object* x_75; lean_object* x_76; lean_object* x_77; lean_object* x_78; lean_object* x_79; lean_object* x_80; lean_object* x_81; lean_object* x_82; lean_object* x_83; uint8_t x_84; 
-lean_dec(x_66);
+lean_object* x_72; lean_object* x_73; lean_object* x_74; size_t x_75; size_t x_76; lean_object* x_77; lean_object* x_78; lean_object* x_79; lean_object* x_80; lean_object* x_81; lean_object* x_82; lean_object* x_83; lean_object* x_84; lean_object* x_85; lean_object* x_86; lean_object* x_87; uint8_t x_88; 
+lean_dec(x_68);
 lean_dec(x_14);
 lean_dec(x_4);
 lean_dec(x_3);
 lean_dec(x_1);
-x_70 = lean_ctor_get(x_67, 1);
-lean_inc(x_70);
-lean_dec(x_67);
-x_71 = lean_usize_of_nat(x_10);
+x_72 = lean_ctor_get(x_69, 1);
+lean_inc(x_72);
+lean_dec(x_69);
+x_73 = lean_mk_string("failed to create telescope generalizing ");
+x_74 = l_Lean_stringToMessageData(x_73);
+lean_dec(x_73);
+x_75 = lean_usize_of_nat(x_10);
 lean_dec(x_10);
-x_72 = 0;
-x_73 = x_2;
-x_74 = l_Array_mapMUnsafe_map___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__2(x_71, x_72, x_73);
-x_75 = x_74;
-x_76 = lean_array_to_list(lean_box(0), x_75);
-x_77 = l_List_map___at_Lean_MessageData_instCoeListExprMessageData___spec__1(x_76);
-x_78 = l_Lean_MessageData_ofList(x_77);
-lean_dec(x_77);
-x_79 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__2;
-x_80 = lean_alloc_ctor(10, 2, 0);
-lean_ctor_set(x_80, 0, x_79);
-lean_ctor_set(x_80, 1, x_78);
-x_81 = l_Lean_KernelException_toMessageData___closed__15;
-x_82 = lean_alloc_ctor(10, 2, 0);
-lean_ctor_set(x_82, 0, x_80);
-lean_ctor_set(x_82, 1, x_81);
-x_83 = l_Lean_throwError___at_Lean_Meta_whnf___spec__1(x_82, x_5, x_6, x_7, x_8, x_70);
+x_76 = 0;
+x_77 = x_2;
+x_78 = l_Array_mapMUnsafe_map___at_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___spec__2(x_75, x_76, x_77);
+x_79 = x_78;
+x_80 = lean_array_to_list(lean_box(0), x_79);
+x_81 = l_List_map___at_Lean_MessageData_instCoeListExprMessageData___spec__1(x_80);
+x_82 = l_Lean_MessageData_ofList(x_81);
+lean_dec(x_81);
+x_83 = lean_alloc_ctor(10, 2, 0);
+lean_ctor_set(x_83, 0, x_74);
+lean_ctor_set(x_83, 1, x_82);
+x_84 = lean_mk_string("");
+x_85 = l_Lean_stringToMessageData(x_84);
+lean_dec(x_84);
+x_86 = lean_alloc_ctor(10, 2, 0);
+lean_ctor_set(x_86, 0, x_83);
+lean_ctor_set(x_86, 1, x_85);
+x_87 = l_Lean_throwError___at_Lean_Meta_whnf___spec__1(x_86, x_5, x_6, x_7, x_8, x_72);
 lean_dec(x_8);
 lean_dec(x_7);
 lean_dec(x_6);
 lean_dec(x_5);
-x_84 = !lean_is_exclusive(x_83);
-if (x_84 == 0)
+x_88 = !lean_is_exclusive(x_87);
+if (x_88 == 0)
 {
-return x_83;
-}
-else
-{
-lean_object* x_85; lean_object* x_86; lean_object* x_87; 
-x_85 = lean_ctor_get(x_83, 0);
-x_86 = lean_ctor_get(x_83, 1);
-lean_inc(x_86);
-lean_inc(x_85);
-lean_dec(x_83);
-x_87 = lean_alloc_ctor(1, 2, 0);
-lean_ctor_set(x_87, 0, x_85);
-lean_ctor_set(x_87, 1, x_86);
 return x_87;
 }
+else
+{
+lean_object* x_89; lean_object* x_90; lean_object* x_91; 
+x_89 = lean_ctor_get(x_87, 0);
+x_90 = lean_ctor_get(x_87, 1);
+lean_inc(x_90);
+lean_inc(x_89);
+lean_dec(x_87);
+x_91 = lean_alloc_ctor(1, 2, 0);
+lean_ctor_set(x_91, 0, x_89);
+lean_ctor_set(x_91, 1, x_90);
+return x_91;
+}
 }
 else
 {
-lean_object* x_88; lean_object* x_89; lean_object* x_90; 
+lean_object* x_92; lean_object* x_93; lean_object* x_94; 
 lean_dec(x_10);
-x_88 = lean_ctor_get(x_67, 1);
-lean_inc(x_88);
-lean_dec(x_67);
-x_89 = lean_box(0);
-x_90 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__2(x_3, x_14, x_2, x_4, x_1, x_66, x_89, x_5, x_6, x_7, x_8, x_88);
-return x_90;
+x_92 = lean_ctor_get(x_69, 1);
+lean_inc(x_92);
+lean_dec(x_69);
+x_93 = lean_box(0);
+x_94 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___lambda__2(x_3, x_14, x_2, x_4, x_1, x_68, x_93, x_5, x_6, x_7, x_8, x_92);
+return x_94;
 }
 }
 }
@@ -1107,7 +1097,7 @@ x_17 = lean_ctor_get(x_15, 1);
 lean_inc(x_17);
 lean_dec(x_15);
 x_18 = lean_unsigned_to_nat(0u);
-x_19 = l_Array_empty___closed__1;
+x_19 = lean_mk_empty_array_with_capacity(x_18);
 x_20 = l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg(x_2, x_16, x_18, x_19, x_3, x_4, x_5, x_6, x_17);
 return x_20;
 }
@@ -1173,10 +1163,6 @@ lean_dec_ref(res);
 res = initialize_Lean_Meta_KAbstract(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__1 = _init_l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__1();
-lean_mark_persistent(l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__1);
-l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__2 = _init_l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__2();
-lean_mark_persistent(l_Lean_Meta_GeneralizeTelescope_generalizeTelescopeAux___rarg___closed__2);
 l_Lean_Meta_generalizeTelescope___rarg___boxed__const__1 = _init_l_Lean_Meta_generalizeTelescope___rarg___boxed__const__1();
 lean_mark_persistent(l_Lean_Meta_generalizeTelescope___rarg___boxed__const__1);
 return lean_io_result_mk_ok(lean_box(0));

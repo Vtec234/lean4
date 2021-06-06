@@ -110,7 +110,6 @@ lean_object* l_Array_mapMUnsafe_map___at_Lean_IR_FnBody_replaceVar___spec__4___b
 lean_object* l_Lean_IR_MapVars_mapArgs___at_Lean_IR_FnBody_replaceVar___spec__9___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_IR_MapVars_mapArgs___at_Lean_IR_FnBody_replaceVar___spec__3(lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_IR_NormalizeIds_withParams(lean_object*);
-lean_object* l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normFnBody___spec__3___closed__1;
 lean_object* l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normArgs___spec__1___boxed(lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Array_mapMUnsafe_map___at_Lean_IR_FnBody_replaceVar___spec__13___boxed(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_IR_MapVars_mapArg(lean_object*, lean_object*);
@@ -2814,14 +2813,6 @@ return x_35;
 }
 }
 }
-static lean_object* _init_l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normFnBody___spec__3___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_Lean_IR_NormalizeIds_normFnBody), 3, 0);
-return x_1;
-}
-}
 lean_object* l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normFnBody___spec__3(size_t x_1, size_t x_2, lean_object* x_3, lean_object* x_4, lean_object* x_5) {
 _start:
 {
@@ -2844,7 +2835,7 @@ x_9 = lean_array_uget(x_3, x_2);
 x_10 = lean_unsigned_to_nat(0u);
 x_11 = lean_array_uset(x_3, x_2, x_10);
 x_12 = x_9;
-x_13 = l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normFnBody___spec__3___closed__1;
+x_13 = lean_alloc_closure((void*)(l_Lean_IR_NormalizeIds_normFnBody), 3, 0);
 lean_inc(x_4);
 x_14 = l_Lean_IR_AltCore_mmodifyBody___at_Lean_IR_NormalizeIds_normFnBody___spec__2(x_13, x_12, x_4, x_5);
 x_15 = lean_ctor_get(x_14, 0);
@@ -8642,8 +8633,6 @@ lean_dec_ref(res);
 res = initialize_Lean_Compiler_IR_Basic(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normFnBody___spec__3___closed__1 = _init_l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normFnBody___spec__3___closed__1();
-lean_mark_persistent(l_Array_mapMUnsafe_map___at_Lean_IR_NormalizeIds_normFnBody___spec__3___closed__1);
 l_Lean_IR_NormalizeIds_normFnBody___boxed__const__1 = _init_l_Lean_IR_NormalizeIds_normFnBody___boxed__const__1();
 lean_mark_persistent(l_Lean_IR_NormalizeIds_normFnBody___boxed__const__1);
 return lean_io_result_mk_ok(lean_box(0));

@@ -14,26 +14,39 @@
 extern "C" {
 #endif
 lean_object* l_Lean_registerTraceClass(lean_object*, lean_object*);
+lean_object* lean_name_mk_string(lean_object*, lean_object*);
 lean_object* l_Lean_initFn____x40_Lean_Meta_Tactic_Simp___hyg_3_(lean_object*);
 lean_object* l_Lean_initFn____x40_Lean_Meta_Tactic_Simp___hyg_12_(lean_object*);
-extern lean_object* l_Lean_Meta_Simp_synthesizeArgs_synthesizeInstance___closed__2;
-extern lean_object* l_Lean_Meta_Simp_rewrite___closed__5;
 lean_object* l_Lean_initFn____x40_Lean_Meta_Tactic_Simp___hyg_3_(lean_object* x_1) {
 _start:
 {
-lean_object* x_2; lean_object* x_3; 
-x_2 = l_Lean_Meta_Simp_synthesizeArgs_synthesizeInstance___closed__2;
-x_3 = l_Lean_registerTraceClass(x_2, x_1);
-return x_3;
+lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; lean_object* x_6; lean_object* x_7; lean_object* x_8; lean_object* x_9; 
+x_2 = lean_box(0);
+x_3 = lean_mk_string("Meta");
+x_4 = lean_name_mk_string(x_2, x_3);
+x_5 = lean_mk_string("Tactic");
+x_6 = lean_name_mk_string(x_4, x_5);
+x_7 = lean_mk_string("simp");
+x_8 = lean_name_mk_string(x_6, x_7);
+x_9 = l_Lean_registerTraceClass(x_8, x_1);
+return x_9;
 }
 }
 lean_object* l_Lean_initFn____x40_Lean_Meta_Tactic_Simp___hyg_12_(lean_object* x_1) {
 _start:
 {
-lean_object* x_2; lean_object* x_3; 
-x_2 = l_Lean_Meta_Simp_rewrite___closed__5;
-x_3 = l_Lean_registerTraceClass(x_2, x_1);
-return x_3;
+lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; lean_object* x_6; lean_object* x_7; lean_object* x_8; lean_object* x_9; lean_object* x_10; lean_object* x_11; 
+x_2 = lean_box(0);
+x_3 = lean_mk_string("Debug");
+x_4 = lean_name_mk_string(x_2, x_3);
+x_5 = lean_mk_string("Meta");
+x_6 = lean_name_mk_string(x_4, x_5);
+x_7 = lean_mk_string("Tactic");
+x_8 = lean_name_mk_string(x_6, x_7);
+x_9 = lean_mk_string("simp");
+x_10 = lean_name_mk_string(x_8, x_9);
+x_11 = l_Lean_registerTraceClass(x_10, x_1);
+return x_11;
 }
 }
 lean_object* initialize_Init(lean_object*);

@@ -14,22 +14,18 @@
 extern "C" {
 #endif
 lean_object* l_Lean_Meta_DiscrTree_Key_hash_match__1(lean_object*);
-lean_object* l_Lean_Meta_DiscrTree_instBEqKey___closed__1;
 lean_object* l___private_Lean_Meta_DiscrTreeTypes_0__Lean_Meta_DiscrTree_beqKey____x40_Lean_Meta_DiscrTreeTypes___hyg_73____boxed(lean_object*, lean_object*);
 lean_object* l_Lean_Meta_DiscrTree_root___default(lean_object*);
-lean_object* l_Lean_Meta_DiscrTree_instInhabitedKey___closed__1;
 lean_object* l_Lean_Meta_DiscrTree_instHashableKey;
-extern lean_object* l_Std_PersistentHashMap_root___default___closed__2;
 uint8_t lean_name_eq(lean_object*, lean_object*);
 uint8_t l___private_Lean_Meta_DiscrTreeTypes_0__Lean_Meta_DiscrTree_beqKey____x40_Lean_Meta_DiscrTreeTypes___hyg_73_(lean_object*, lean_object*);
 uint8_t lean_nat_dec_eq(lean_object*, lean_object*);
 lean_object* l_Lean_Meta_DiscrTree_Key_hash_match__1___rarg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
-lean_object* l_Lean_Meta_DiscrTree_root___default___closed__1;
 uint64_t l_Lean_Name_hash(lean_object*);
 lean_object* l_Lean_Meta_DiscrTree_instBEqKey;
+lean_object* l_Std_PersistentHashMap_mkEmptyEntriesArray(lean_object*, lean_object*);
 uint64_t lean_uint64_of_nat(lean_object*);
 uint8_t l___private_Lean_Expr_0__Lean_beqLiteral____x40_Lean_Expr___hyg_30_(lean_object*, lean_object*);
-lean_object* l_Lean_Meta_DiscrTree_instHashableKey___closed__1;
 lean_object* l_Lean_Meta_DiscrTree_instInhabitedKey;
 uint64_t l_Lean_Literal_hash(lean_object*);
 lean_object* l___private_Lean_Meta_DiscrTreeTypes_0__Lean_Meta_DiscrTree_beqKey____x40_Lean_Meta_DiscrTreeTypes___hyg_73__match__1___rarg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
@@ -37,7 +33,7 @@ uint64_t lean_uint64_mix_hash(uint64_t, uint64_t);
 lean_object* l___private_Lean_Meta_DiscrTreeTypes_0__Lean_Meta_DiscrTree_beqKey____x40_Lean_Meta_DiscrTreeTypes___hyg_73__match__1(lean_object*);
 lean_object* l_Lean_Meta_DiscrTree_Key_hash___boxed(lean_object*);
 uint64_t l_Lean_Meta_DiscrTree_Key_hash(lean_object*);
-static lean_object* _init_l_Lean_Meta_DiscrTree_instInhabitedKey___closed__1() {
+static lean_object* _init_l_Lean_Meta_DiscrTree_instInhabitedKey() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; lean_object* x_3; 
@@ -47,14 +43,6 @@ x_3 = lean_alloc_ctor(0, 2, 0);
 lean_ctor_set(x_3, 0, x_1);
 lean_ctor_set(x_3, 1, x_2);
 return x_3;
-}
-}
-static lean_object* _init_l_Lean_Meta_DiscrTree_instInhabitedKey() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_Lean_Meta_DiscrTree_instInhabitedKey___closed__1;
-return x_1;
 }
 }
 lean_object* l___private_Lean_Meta_DiscrTreeTypes_0__Lean_Meta_DiscrTree_beqKey____x40_Lean_Meta_DiscrTreeTypes___hyg_73__match__1___rarg(lean_object* x_1, lean_object* x_2, lean_object* x_3, lean_object* x_4, lean_object* x_5, lean_object* x_6, lean_object* x_7, lean_object* x_8, lean_object* x_9) {
@@ -373,19 +361,11 @@ x_4 = lean_box(x_3);
 return x_4;
 }
 }
-static lean_object* _init_l_Lean_Meta_DiscrTree_instBEqKey___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l___private_Lean_Meta_DiscrTreeTypes_0__Lean_Meta_DiscrTree_beqKey____x40_Lean_Meta_DiscrTreeTypes___hyg_73____boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_Lean_Meta_DiscrTree_instBEqKey() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_Lean_Meta_DiscrTree_instBEqKey___closed__1;
+x_1 = lean_alloc_closure((void*)(l___private_Lean_Meta_DiscrTreeTypes_0__Lean_Meta_DiscrTree_beqKey____x40_Lean_Meta_DiscrTreeTypes___hyg_73____boxed), 2, 0);
 return x_1;
 }
 }
@@ -554,7 +534,7 @@ x_3 = lean_box_uint64(x_2);
 return x_3;
 }
 }
-static lean_object* _init_l_Lean_Meta_DiscrTree_instHashableKey___closed__1() {
+static lean_object* _init_l_Lean_Meta_DiscrTree_instHashableKey() {
 _start:
 {
 lean_object* x_1; 
@@ -562,32 +542,18 @@ x_1 = lean_alloc_closure((void*)(l_Lean_Meta_DiscrTree_Key_hash___boxed), 1, 0);
 return x_1;
 }
 }
-static lean_object* _init_l_Lean_Meta_DiscrTree_instHashableKey() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_Lean_Meta_DiscrTree_instHashableKey___closed__1;
-return x_1;
-}
-}
-static lean_object* _init_l_Lean_Meta_DiscrTree_root___default___closed__1() {
-_start:
-{
-lean_object* x_1; lean_object* x_2; lean_object* x_3; 
-x_1 = l_Std_PersistentHashMap_root___default___closed__2;
-x_2 = lean_unsigned_to_nat(0u);
-x_3 = lean_alloc_ctor(0, 2, 0);
-lean_ctor_set(x_3, 0, x_1);
-lean_ctor_set(x_3, 1, x_2);
-return x_3;
-}
-}
 lean_object* l_Lean_Meta_DiscrTree_root___default(lean_object* x_1) {
 _start:
 {
-lean_object* x_2; 
-x_2 = l_Lean_Meta_DiscrTree_root___default___closed__1;
-return x_2;
+lean_object* x_2; lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+x_2 = l_Std_PersistentHashMap_mkEmptyEntriesArray(lean_box(0), lean_box(0));
+x_3 = lean_alloc_ctor(0, 1, 0);
+lean_ctor_set(x_3, 0, x_2);
+x_4 = lean_unsigned_to_nat(0u);
+x_5 = lean_alloc_ctor(0, 2, 0);
+lean_ctor_set(x_5, 0, x_3);
+lean_ctor_set(x_5, 1, x_4);
+return x_5;
 }
 }
 lean_object* initialize_Init(lean_object*);
@@ -603,20 +569,12 @@ lean_dec_ref(res);
 res = initialize_Lean_Expr(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_Lean_Meta_DiscrTree_instInhabitedKey___closed__1 = _init_l_Lean_Meta_DiscrTree_instInhabitedKey___closed__1();
-lean_mark_persistent(l_Lean_Meta_DiscrTree_instInhabitedKey___closed__1);
 l_Lean_Meta_DiscrTree_instInhabitedKey = _init_l_Lean_Meta_DiscrTree_instInhabitedKey();
 lean_mark_persistent(l_Lean_Meta_DiscrTree_instInhabitedKey);
-l_Lean_Meta_DiscrTree_instBEqKey___closed__1 = _init_l_Lean_Meta_DiscrTree_instBEqKey___closed__1();
-lean_mark_persistent(l_Lean_Meta_DiscrTree_instBEqKey___closed__1);
 l_Lean_Meta_DiscrTree_instBEqKey = _init_l_Lean_Meta_DiscrTree_instBEqKey();
 lean_mark_persistent(l_Lean_Meta_DiscrTree_instBEqKey);
-l_Lean_Meta_DiscrTree_instHashableKey___closed__1 = _init_l_Lean_Meta_DiscrTree_instHashableKey___closed__1();
-lean_mark_persistent(l_Lean_Meta_DiscrTree_instHashableKey___closed__1);
 l_Lean_Meta_DiscrTree_instHashableKey = _init_l_Lean_Meta_DiscrTree_instHashableKey();
 lean_mark_persistent(l_Lean_Meta_DiscrTree_instHashableKey);
-l_Lean_Meta_DiscrTree_root___default___closed__1 = _init_l_Lean_Meta_DiscrTree_root___default___closed__1();
-lean_mark_persistent(l_Lean_Meta_DiscrTree_root___default___closed__1);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus

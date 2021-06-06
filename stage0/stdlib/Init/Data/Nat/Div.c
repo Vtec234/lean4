@@ -13,7 +13,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-lean_object* l_Nat_instDivNat___closed__1;
 lean_object* lean_nat_div(lean_object*, lean_object*);
 lean_object* l_Nat_div___boxed(lean_object*, lean_object*);
 lean_object* lean_nat_add(lean_object*, lean_object*);
@@ -27,7 +26,6 @@ lean_object* l___private_Init_Data_Nat_Div_0__Nat_div_F(lean_object*, lean_objec
 lean_object* l___private_Init_Data_Nat_Div_0__Nat_mod_F___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* l_Nat_instDivNat;
 lean_object* lean_nat_mod(lean_object*, lean_object*);
-lean_object* l_Nat_instModNat___closed__1;
 uint8_t lean_nat_dec_lt(lean_object*, lean_object*);
 lean_object* l___private_Init_Data_Nat_Div_0__Nat_div_F(lean_object* x_1, lean_object* x_2, lean_object* x_3) {
 _start:
@@ -87,19 +85,11 @@ lean_dec(x_1);
 return x_3;
 }
 }
-static lean_object* _init_l_Nat_instDivNat___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_Nat_div___boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_Nat_instDivNat() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_Nat_instDivNat___closed__1;
+x_1 = lean_alloc_closure((void*)(l_Nat_div___boxed), 2, 0);
 return x_1;
 }
 }
@@ -156,19 +146,11 @@ lean_dec(x_1);
 return x_3;
 }
 }
-static lean_object* _init_l_Nat_instModNat___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_Nat_mod___boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_Nat_instModNat() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_Nat_instModNat___closed__1;
+x_1 = lean_alloc_closure((void*)(l_Nat_mod___boxed), 2, 0);
 return x_1;
 }
 }
@@ -185,12 +167,8 @@ lean_dec_ref(res);
 res = initialize_Init_Data_Nat_Basic(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_Nat_instDivNat___closed__1 = _init_l_Nat_instDivNat___closed__1();
-lean_mark_persistent(l_Nat_instDivNat___closed__1);
 l_Nat_instDivNat = _init_l_Nat_instDivNat();
 lean_mark_persistent(l_Nat_instDivNat);
-l_Nat_instModNat___closed__1 = _init_l_Nat_instModNat___closed__1();
-lean_mark_persistent(l_Nat_instModNat___closed__1);
 l_Nat_instModNat = _init_l_Nat_instModNat();
 lean_mark_persistent(l_Nat_instModNat);
 return lean_io_result_mk_ok(lean_box(0));

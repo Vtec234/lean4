@@ -23,7 +23,6 @@ lean_object* l_Ordering_isLE_match__1___rarg(uint8_t, lean_object*, lean_object*
 uint8_t l_UInt8_decEq(uint8_t, uint8_t);
 uint8_t l_USize_decEq(size_t, size_t);
 lean_object* l_instDecidableRelLtLtOfOrd___rarg___boxed(lean_object*, lean_object*, lean_object*);
-lean_object* l_instBEqOrdering___closed__1;
 lean_object* l_instOrdFin___rarg___boxed(lean_object*, lean_object*);
 lean_object* l_instOrdFin___boxed(lean_object*);
 lean_object* l_instOrdUInt64___boxed(lean_object*, lean_object*);
@@ -266,19 +265,11 @@ x_6 = lean_box(x_5);
 return x_6;
 }
 }
-static lean_object* _init_l_instBEqOrdering___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l___private_Init_Data_Ord_0__beqOrdering____x40_Init_Data_Ord___hyg_10____boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_instBEqOrdering() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_instBEqOrdering___closed__1;
+x_1 = lean_alloc_closure((void*)(l___private_Init_Data_Ord_0__beqOrdering____x40_Init_Data_Ord___hyg_10____boxed), 2, 0);
 return x_1;
 }
 }
@@ -1077,8 +1068,6 @@ res = initialize_Init_Data_String(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 l_instInhabitedOrdering = _init_l_instInhabitedOrdering();
-l_instBEqOrdering___closed__1 = _init_l_instBEqOrdering___closed__1();
-lean_mark_persistent(l_instBEqOrdering___closed__1);
 l_instBEqOrdering = _init_l_instBEqOrdering();
 lean_mark_persistent(l_instBEqOrdering);
 return lean_io_result_mk_ok(lean_box(0));

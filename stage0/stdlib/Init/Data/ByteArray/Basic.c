@@ -15,16 +15,13 @@ extern "C" {
 #endif
 lean_object* l_ByteArray_push___boxed(lean_object*, lean_object*);
 lean_object* l_List_reverse___rarg(lean_object*);
-lean_object* l_ByteArray_instAppendByteArray___closed__1;
 lean_object* l_ByteArray_instAppendByteArray;
 lean_object* l_ByteArray_toList_loop(lean_object*, lean_object*, lean_object*);
-extern lean_object* l_term_x5b___x5d___closed__9;
 lean_object* l_ByteArray_toList_loop___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* l_List_toStringAux___at_instToStringByteArray___spec__2(uint8_t, lean_object*);
 lean_object* l_instToStringByteArray(lean_object*);
 lean_object* l_ByteArray_findIdx_x3f_loop(lean_object*, lean_object*, lean_object*);
 lean_object* lean_byte_array_data(lean_object*);
-extern lean_object* l_Lean_instInhabitedParserDescr___closed__1;
 lean_object* l_ByteArray_set_x21_match__1(lean_object*);
 lean_object* l_ByteArray_push_match__1___rarg___boxed(lean_object*, lean_object*, lean_object*);
 lean_object* l_ByteArray_findIdx_x3f(lean_object*, lean_object*, lean_object*);
@@ -38,9 +35,7 @@ uint8_t lean_nat_dec_eq(lean_object*, lean_object*);
 lean_object* lean_nat_sub(lean_object*, lean_object*);
 lean_object* l_ByteArray_get_x21_match__1(lean_object*);
 lean_object* l_ByteArray_get_x21_match__1___rarg(lean_object*, lean_object*, lean_object*);
-extern lean_object* l_instReprList___rarg___closed__1;
 lean_object* l_ByteArray_extract(lean_object*, lean_object*, lean_object*);
-lean_object* l_ByteArray_empty___closed__1;
 lean_object* l_instToStringByteArray___boxed(lean_object*);
 lean_object* l_List_toString___at_instToStringByteArray___spec__1(lean_object*);
 lean_object* l_Nat_repr(lean_object*);
@@ -57,7 +52,6 @@ lean_object* l_ByteArray_copySlice___boxed(lean_object*, lean_object*, lean_obje
 lean_object* l_ByteArray_append___boxed(lean_object*, lean_object*);
 lean_object* l_ByteArray_instInhabitedByteArray;
 lean_object* l_ByteArray_size_match__1___rarg(lean_object*, lean_object*);
-extern lean_object* l_term_x5b___x5d___closed__5;
 lean_object* l_List_toByteArray_loop_match__1(lean_object*);
 lean_object* lean_byte_array_copy_slice(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, uint8_t);
 lean_object* l_ByteArray_isEmpty___boxed(lean_object*);
@@ -76,7 +70,6 @@ lean_object* l_ByteArray_set_x21___boxed(lean_object*, lean_object*, lean_object
 lean_object* lean_mk_empty_byte_array(lean_object*);
 lean_object* l_ByteArray_mk___boxed(lean_object*);
 lean_object* l_ByteArray_mkEmpty___boxed(lean_object*);
-extern lean_object* l_term_x5b___x5d___closed__3;
 lean_object* lean_uint8_to_nat(uint8_t);
 lean_object* l_ByteArray_size___boxed(lean_object*);
 uint8_t lean_nat_dec_lt(lean_object*, lean_object*);
@@ -105,21 +98,13 @@ lean_dec(x_1);
 return x_2;
 }
 }
-static lean_object* _init_l_ByteArray_empty___closed__1() {
+static lean_object* _init_l_ByteArray_empty() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; 
 x_1 = lean_unsigned_to_nat(0u);
 x_2 = lean_mk_empty_byte_array(x_1);
 return x_2;
-}
-}
-static lean_object* _init_l_ByteArray_empty() {
-_start:
-{
-lean_object* x_1; 
-x_1 = l_ByteArray_empty___closed__1;
-return x_1;
 }
 }
 static lean_object* _init_l_ByteArray_instInhabitedByteArray() {
@@ -344,19 +329,11 @@ lean_dec(x_2);
 return x_3;
 }
 }
-static lean_object* _init_l_ByteArray_instAppendByteArray___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_ByteArray_append___boxed), 2, 0);
-return x_1;
-}
-}
 static lean_object* _init_l_ByteArray_instAppendByteArray() {
 _start:
 {
 lean_object* x_1; 
-x_1 = l_ByteArray_instAppendByteArray___closed__1;
+x_1 = lean_alloc_closure((void*)(l_ByteArray_append___boxed), 2, 0);
 return x_1;
 }
 }
@@ -562,7 +539,7 @@ if (x_1 == 0)
 if (lean_obj_tag(x_2) == 0)
 {
 lean_object* x_3; 
-x_3 = l_Lean_instInhabitedParserDescr___closed__1;
+x_3 = lean_mk_string("");
 return x_3;
 }
 else
@@ -577,7 +554,7 @@ x_6 = lean_unbox(x_4);
 lean_dec(x_4);
 x_7 = lean_uint8_to_nat(x_6);
 x_8 = l_Nat_repr(x_7);
-x_9 = l_term_x5b___x5d___closed__5;
+x_9 = lean_mk_string(", ");
 x_10 = lean_string_append(x_9, x_8);
 lean_dec(x_8);
 x_11 = 0;
@@ -592,7 +569,7 @@ else
 if (lean_obj_tag(x_2) == 0)
 {
 lean_object* x_14; 
-x_14 = l_Lean_instInhabitedParserDescr___closed__1;
+x_14 = lean_mk_string("");
 return x_14;
 }
 else
@@ -622,7 +599,7 @@ _start:
 if (lean_obj_tag(x_1) == 0)
 {
 lean_object* x_2; 
-x_2 = l_instReprList___rarg___closed__1;
+x_2 = lean_mk_string("[]");
 return x_2;
 }
 else
@@ -634,11 +611,12 @@ if (x_3 == 0)
 uint8_t x_4; lean_object* x_5; lean_object* x_6; lean_object* x_7; lean_object* x_8; lean_object* x_9; 
 x_4 = 1;
 x_5 = l_List_toStringAux___at_instToStringByteArray___spec__2(x_4, x_1);
-x_6 = l_term_x5b___x5d___closed__3;
+x_6 = lean_mk_string("[");
 x_7 = lean_string_append(x_6, x_5);
 lean_dec(x_5);
-x_8 = l_term_x5b___x5d___closed__9;
+x_8 = lean_mk_string("]");
 x_9 = lean_string_append(x_7, x_8);
+lean_dec(x_8);
 return x_9;
 }
 else
@@ -654,11 +632,12 @@ lean_ctor_set(x_12, 0, x_10);
 lean_ctor_set(x_12, 1, x_11);
 x_13 = 1;
 x_14 = l_List_toStringAux___at_instToStringByteArray___spec__2(x_13, x_12);
-x_15 = l_term_x5b___x5d___closed__3;
+x_15 = lean_mk_string("[");
 x_16 = lean_string_append(x_15, x_14);
 lean_dec(x_14);
-x_17 = l_term_x5b___x5d___closed__9;
+x_17 = lean_mk_string("]");
 x_18 = lean_string_append(x_16, x_17);
+lean_dec(x_17);
 return x_18;
 }
 }
@@ -713,14 +692,10 @@ lean_dec_ref(res);
 res = initialize_Init_Data_Option_Basic(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_ByteArray_empty___closed__1 = _init_l_ByteArray_empty___closed__1();
-lean_mark_persistent(l_ByteArray_empty___closed__1);
 l_ByteArray_empty = _init_l_ByteArray_empty();
 lean_mark_persistent(l_ByteArray_empty);
 l_ByteArray_instInhabitedByteArray = _init_l_ByteArray_instInhabitedByteArray();
 lean_mark_persistent(l_ByteArray_instInhabitedByteArray);
-l_ByteArray_instAppendByteArray___closed__1 = _init_l_ByteArray_instAppendByteArray___closed__1();
-lean_mark_persistent(l_ByteArray_instAppendByteArray___closed__1);
 l_ByteArray_instAppendByteArray = _init_l_ByteArray_instAppendByteArray();
 lean_mark_persistent(l_ByteArray_instAppendByteArray);
 return lean_io_result_mk_ok(lean_box(0));

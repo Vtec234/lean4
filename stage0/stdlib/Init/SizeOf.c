@@ -15,7 +15,6 @@ extern "C" {
 #endif
 lean_object* l_instSizeOf(lean_object*);
 lean_object* l_instSizeOfNat(lean_object*);
-lean_object* l_instSizeOf___closed__1;
 lean_object* l_Lean_Name_sizeOf_match__1(lean_object*);
 lean_object* l_default_sizeOf___boxed(lean_object*, lean_object*);
 lean_object* l_instSizeOfNat___boxed(lean_object*);
@@ -38,20 +37,12 @@ lean_dec(x_2);
 return x_3;
 }
 }
-static lean_object* _init_l_instSizeOf___closed__1() {
-_start:
-{
-lean_object* x_1; 
-x_1 = lean_alloc_closure((void*)(l_default_sizeOf___boxed), 2, 1);
-lean_closure_set(x_1, 0, lean_box(0));
-return x_1;
-}
-}
 lean_object* l_instSizeOf(lean_object* x_1) {
 _start:
 {
 lean_object* x_2; 
-x_2 = l_instSizeOf___closed__1;
+x_2 = lean_alloc_closure((void*)(l_default_sizeOf___boxed), 2, 1);
+lean_closure_set(x_2, 0, lean_box(0));
 return x_2;
 }
 }
@@ -134,8 +125,6 @@ _G_initialized = true;
 res = initialize_Init_Notation(lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
-l_instSizeOf___closed__1 = _init_l_instSizeOf___closed__1();
-lean_mark_persistent(l_instSizeOf___closed__1);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus

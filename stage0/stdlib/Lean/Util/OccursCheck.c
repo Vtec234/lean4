@@ -18,6 +18,7 @@ lean_object* l_Lean_MetavarContext_getExprAssignment_x3f(lean_object*, lean_obje
 uint8_t lean_name_eq(lean_object*, lean_object*);
 lean_object* l_Lean_MetavarContext_getDelayedAssignment_x3f(lean_object*, lean_object*);
 lean_object* l_Lean_MetavarContext_occursCheck___boxed(lean_object*, lean_object*, lean_object*);
+lean_object* l_Std_mkHashSetImp___rarg(lean_object*);
 lean_object* l_Std_HashSetImp_insert___at___private_Lean_MetavarContext_0__Lean_MetavarContext_DependsOn_shouldVisit___spec__3(lean_object*, lean_object*);
 lean_object* l_Lean_MetavarContext_occursCheck_visit(lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_MetavarContext_occursCheck_match__1___rarg(lean_object*, lean_object*, lean_object*);
@@ -26,7 +27,6 @@ lean_object* l_Lean_MetavarContext_occursCheck_visitMVar___boxed(lean_object*, l
 lean_object* l_Lean_MetavarContext_occursCheck_visit_match__1(lean_object*);
 lean_object* l_Lean_MetavarContext_occursCheck_visit_match__1___rarg(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_MetavarContext_occursCheck_match__1(lean_object*);
-extern lean_object* l_Std_HashSet_instInhabitedHashSet___closed__1;
 lean_object* l_Lean_MetavarContext_occursCheck_visitMVar_match__2___rarg(lean_object*, lean_object*, lean_object*);
 lean_object* l_Lean_MetavarContext_occursCheck_visit___boxed(lean_object*, lean_object*, lean_object*, lean_object*);
 uint8_t l_Lean_MetavarContext_occursCheck(lean_object*, lean_object*, lean_object*);
@@ -702,22 +702,23 @@ return x_5;
 }
 else
 {
-lean_object* x_6; lean_object* x_7; 
-x_6 = l_Std_HashSet_instInhabitedHashSet___closed__1;
-x_7 = l_Lean_MetavarContext_occursCheck_visit(x_1, x_2, x_3, x_6);
-if (lean_obj_tag(x_7) == 0)
+lean_object* x_6; lean_object* x_7; lean_object* x_8; 
+x_6 = lean_unsigned_to_nat(8u);
+x_7 = l_Std_mkHashSetImp___rarg(x_6);
+x_8 = l_Lean_MetavarContext_occursCheck_visit(x_1, x_2, x_3, x_7);
+if (lean_obj_tag(x_8) == 0)
 {
-uint8_t x_8; 
-lean_dec(x_7);
-x_8 = 1;
-return x_8;
+uint8_t x_9; 
+lean_dec(x_8);
+x_9 = 1;
+return x_9;
 }
 else
 {
-uint8_t x_9; 
-lean_dec(x_7);
-x_9 = 0;
-return x_9;
+uint8_t x_10; 
+lean_dec(x_8);
+x_10 = 0;
+return x_10;
 }
 }
 }

@@ -2,7 +2,7 @@ add_library(shell OBJECT lean.cpp)
 
 string(TOUPPER "${CMAKE_BUILD_TYPE}" uppercase_CMAKE_BUILD_TYPE)
 add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/bin/lean${CMAKE_EXECUTABLE_SUFFIX}
-  COMMAND sh -c "LEANC_GMP=${GMP_LIBRARIES} LEAN_CXX='${CMAKE_CXX_COMPILER_LAUNCHER} ${CMAKE_CXX_COMPILER}' ${CMAKE_BINARY_DIR}/bin/leanc ${CMAKE_EXE_LINKER_FLAGS} ${CMAKE_CXX_FLAGS_${uppercase_CMAKE_BUILD_TYPE}}  $<TARGET_OBJECTS:shell> -o ${CMAKE_BINARY_DIR}/bin/lean${CMAKE_EXECUTABLE_SUFFIX}"
+  COMMAND sh -c "LEANC_GMP=${GMP_LIBRARIES} LEAN_CXX='${CMAKE_CXX_COMPILER_LAUNCHER} ${CMAKE_CXX_COMPILER}' ${CMAKE_BINARY_DIR}/bin/leanc ${CMAKE_EXE_LINKER_FLAGS} -O0 -g $<TARGET_OBJECTS:shell> -o ${CMAKE_BINARY_DIR}/bin/lean${CMAKE_EXECUTABLE_SUFFIX}"
   DEPENDS Init Std Lean leancpp shell)
 
 add_custom_target(lean ALL
@@ -19,6 +19,15 @@ install(FILES ${CMAKE_BINARY_DIR}/bin/lean${CMAKE_EXECUTABLE_SUFFIX}
 #  # https://github.com/msys2/MINGW-packages/issues/5952
 #  target_link_options(lean PRIVATE "-Wl,--out-implib,${CMAKE_BINARY_DIR}/bin/lean.exe.a")
 #endif()
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O0 -s MODULARIZE=1 -s EXPORT_NAME='createLeanModule' -s EXPORTED_RUNTIME_METHODS='[\"ccall\",\"cwrap\"]'")
+  # HACK: not really an executable but emcc needs 
+  add_executable(leanWasm lean_wasm.cpp)
+  set_target_properties(leanWasm PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib/lean/")
+  target_link_libraries(leanWasm Init Std Lean leancpp "${GMP_INSTALL_PREFIX}/lib/libgmp.a")
+endif()
 
 # use executable of current stage for tests
 string(REGEX REPLACE "^([a-zA-Z]):" "/\\1" LEAN_BIN "${CMAKE_BINARY_DIR}/bin")

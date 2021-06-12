@@ -123,7 +123,7 @@ namespace SearchPath
 
 /-- The character that is used to separate the entries in the $PATH (or %PATH%) environment variable. -/
 protected def separator : Char :=
-  if isWindows then ';' else ':'
+  if isWindows || isEmscripten then ';' else ':'
 
 def parse (s : String) : SearchPath :=
   s.split (fun c => SearchPath.separator == c) |>.map FilePath.mk

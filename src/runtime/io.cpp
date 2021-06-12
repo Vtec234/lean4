@@ -531,10 +531,59 @@ static obj_res timespec_to_obj(timespec const & ts) {
     return o;
 }
 
+#if defined(LEAN_EMSCRIPTEN)
+struct js_uri_metadata {
+    uint64_t last_mod_sec;
+    uint64_t size;
+};
+#endif
+
 extern "C" obj_res lean_io_metadata(b_obj_arg fname, obj_arg) {
     struct stat st;
     if (stat(string_cstr(fname), &st) != 0) {
+#if defined(LEAN_EMSCRIPTEN)
+        // On Emscripten, we support URLs as filepaths. Note that this only works in WebWorkers (not on the main thread)
+        js_uri_metadata* js_meta = reinterpret_cast<js_uri_metadata*>(EM_ASM_INT({
+            try {
+                const uri = new URL(UTF8ToString($0));
+                if (uri.protocol !== 'http:' && uri.protocol !== 'https:') { return 0; }
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('HEAD', uri, false);
+                xhr.send();
+                if (xhr.status !== 200) { return 0; }
+
+                // At this point we know the file exists and try to retrieve the size/mtime
+                // from the headers on a best-effort basis
+                let len = parseInt(xhr.getResponseHeader('Content-Length'));
+                if (!len) { len = 0; }
+                let lastMod = Date.parse(xhr.getResponseHeader('Last-Modified')) / 1000;
+                if (!lastMod) { lastMod = 0; }
+
+                const jsUriMeta = Module._malloc($1);
+                setValue(jsUriMeta, lastMod, 'i64');
+                setValue(jsUriMeta+8, len, 'i64');
+                return jsUriMeta;
+            } catch (e) {
+                Module.printErr('lean_io_metadata error: ' + e);
+                return 0;
+            }
+        }, string_cstr(fname), sizeof(js_uri_metadata)));
+
+        if (!js_meta) {
+            return io_result_mk_error(decode_io_error(errno, fname));
+        }
+
+        st.st_atim.tv_sec = js_meta->last_mod_sec;
+        st.st_atim.tv_nsec = 0;
+        st.st_mtim = st.st_atim;
+        st.st_size = js_meta->size;
+        st.st_mode = S_IFREG;
+
+        free(js_meta);
+#else
         return io_result_mk_error(decode_io_error(errno, fname));
+#endif
     }
     object * mdata = alloc_cnstr(0, 2, sizeof(uint64) + sizeof(uint8));
 #ifdef __APPLE__

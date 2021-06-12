@@ -26,6 +26,9 @@ Authors: Leonardo de Moura, Gabriel Ebner, Sebastian Ullrich
 #include "library/constants.h"
 #include "library/time_task.h"
 #include "library/util.h"
+#if defined(LEAN_EMSCRIPTEN)
+#include <emscripten.h>
+#endif
 
 #if defined(__has_feature)
 #if __has_feature(address_sanitizer)
@@ -59,7 +62,43 @@ extern "C" object * lean_save_module_data(object * fname, object * mdata, object
 
 extern "C" object * lean_read_module_data(object * fname, object *) {
     std::string olean_fn(string_cstr(fname));
+    size_t header_size = strlen(g_olean_header);
     try {
+#if defined(LEAN_EMSCRIPTEN)
+        size_t size = 0;
+        // On Emscripten, we support URLs as filepaths. Note that this only works in WebWorkers (not on the main thread)
+        char * buffer = reinterpret_cast<char*>(EM_ASM_INT({
+            const uri = new URL(UTF8ToString($0));
+            if (uri.protocol !== 'http:' && uri.protocol !== 'https:') { return 0; }
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', uri, false);
+            xhr.responseType = 'arraybuffer';
+            xhr.send();
+            if (xhr.status !== 200) {
+                throw new Error(`failed to read file, '${uri}', network status: ${xhr.status}`)
+            }
+
+            const dat = new Uint8Array(xhr.response);
+            const goodHeader = new Uint8Array([111, 108, 101, 97, 110, 102, 105, 108, 101, 33, 33, 33, 33, 33, 33, 33]);
+            const headerSize = goodHeader.byteLength;
+            if (dat.byteLength <= headerSize) {
+                throw new Error(`failed to read file '${uri}', file too small`);
+            }
+            setValue($1, dat.byteLength, 'i32');
+            // NOTE(WN): is this really the only way to compare arrays in JS?!
+            for (let i = 0; i < headerSize; i++) {
+                if (dat[i] !== goodHeader[i]) {
+                    throw new Error(`failed to read file '${uri}', invalid header`);
+                }
+            }
+
+            const wasmBuf = Module._malloc(dat.byteLength - headerSize);
+            const oleanDat = dat.subarray(headerSize);
+            writeArrayToMemory(oleanDat, wasmBuf);
+            return wasmBuf;
+        }, olean_fn.c_str(), &size));
+#else
         shared_file_lock olean_lock(olean_fn);
         std::ifstream in(olean_fn, std::ios_base::binary);
         if (in.fail()) {
@@ -69,9 +108,8 @@ extern "C" object * lean_read_module_data(object * fname, object *) {
         in.seekg(0, in.end);
         size_t size = in.tellg();
         in.seekg(0);
-        size_t header_size = strlen(g_olean_header);
-        if (size < header_size) {
-            return io_result_mk_error((sstream() << "failed to read file '" << olean_fn << "', invalid header").str());
+        if (size <= header_size) {
+            return io_result_mk_error((sstream() << "failed to read file '" << olean_fn << "', file too small").str());
         }
         char * header = new char[header_size];
         in.read(header, header_size);
@@ -86,6 +124,8 @@ extern "C" object * lean_read_module_data(object * fname, object *) {
             return io_result_mk_error((sstream() << "failed to read file '" << olean_fn << "'").str());
         }
         in.close();
+#endif
+
         compacted_region * region = new compacted_region(size - header_size, buffer);
 #if defined(__has_feature)
 #if __has_feature(address_sanitizer)

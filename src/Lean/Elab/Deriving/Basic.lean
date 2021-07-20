@@ -31,10 +31,10 @@ def applyDerivingHandlers (className : Name) (typeNames : Array Name) : CommandE
   | none => defaultHandler className typeNames
 
 @[builtinCommandElab «deriving»] def elabDeriving : CommandElab
-  | `(deriving instance $[$classes],* for $[$declNames],*) => do
+  | `(deriving instance $[$classes $[with $argss?]?],* for $[$declNames],*) => do
      let classes ← classes.mapM resolveGlobalConstNoOverloadWithInfo
      let declNames ← declNames.mapM resolveGlobalConstNoOverloadWithInfo
-     for cls in classes do
+     for cls in classes, args? in argss? do
        try
          applyDerivingHandlers cls declNames
        catch ex =>
@@ -45,14 +45,18 @@ structure DerivingClassView where
   ref : Syntax
   className : Name
 
-/- leading_parser optional (atomic ("deriving " >> notSymbol "instance") >> sepBy1 ident ", ") -/
+/- def derivingClasses  := sepBy1 (ident >> optional (" with " >> Term.structInst)) ", "
+leading_parser optional ("deriving " >> derivingClasses) -/
 def getOptDerivingClasses [Monad m] [MonadEnv m] [MonadResolveName m] [MonadError m] [MonadInfoTree m] (optDeriving : Syntax) : m (Array DerivingClassView) := do
-  if optDeriving.isNone then
-    return #[]
-  else
-    optDeriving[0][1].getSepArgs.mapM fun ident => do
-      let className ← resolveGlobalConstNoOverloadWithInfo ident
-      return { ref := ident, className := className }
+  match optDeriving with
+  | `(Parser.Command.optDeriving| deriving $[$classes $[with $argss?]?],*) =>
+    let mut ret := #[]
+    for cls in classes, args? in argss? do
+      let className ← resolveGlobalConstNoOverloadWithInfo cls
+      ret := ret.push { ref := cls, className := className }
+    return ret
+  | `(Parser.Command.optDeriving|) => return #[]
+  | _ => unreachable!
 
 def DerivingClassView.applyHandlers (view : DerivingClassView) (declNames : Array Name) : CommandElabM Unit :=
   withRef view.ref do applyDerivingHandlers view.className declNames

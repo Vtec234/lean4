@@ -66,6 +66,7 @@
 - [Significant Changes from Lean 3](./lean3changes.md)
 - [Syntax Highlighting Lean in LaTeX](./syntax_highlight_in_latex.md)
 - [User Widgets](examples/widgets.lean.md)
+- [test](examples/test.lean.md)
 
 # Development
 

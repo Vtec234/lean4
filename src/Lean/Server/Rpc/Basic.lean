@@ -33,36 +33,39 @@ end Lean.Lsp
 
 namespace Lean.Server
 
+structure ReferencedObject where
+  obj : Dynamic
+  /-- How many references to this object have been sent to the client.
+  It will be freed after all of those have been released. -/
+  rc  : Nat
+
 structure RpcObjectStore : Type where
   /-- Objects that are being kept alive for the RPC client, together with their type names,
-  mapped to by their RPC reference.
+  mapped to by their RPC reference. -/
+  aliveRefs : PersistentHashMap Lsp.RpcRef ReferencedObject := {}
 
-  Note that we may currently have multiple references to the same object. It is only disposed
-  of once all of those are gone. This simplifies the client a bit as it can drop every reference
-  received separately. -/
-  aliveRefs : PersistentHashMap Lsp.RpcRef Dynamic := {}
-  /-- Value to use for the next `RpcRef`. It is monotonically increasing to avoid any possible
-  bugs resulting from its reuse. -/
-  nextRef   : USize := 0
-
-def rpcStoreRef (any : Dynamic) : StateM RpcObjectStore Lsp.RpcRef := do
+unsafe def rpcStoreRef [TypeName α] (a : α) : StateM RpcObjectStore Lsp.RpcRef := do
+  let ptr := ptrAddrUnsafe a
+  let r : Lsp.RpcRef := ⟨ptr⟩
   let st ← get
-  set { st with
-    aliveRefs := st.aliveRefs.insert ⟨st.nextRef⟩ any
-    nextRef := st.nextRef + 1
-  }
-  return ⟨st.nextRef⟩
+  let obj := st.aliveRefs.findD r { obj := .mk a, rc := 0 }
+  set { st with aliveRefs := st.aliveRefs.insert r { obj with rc := obj.rc + 1 } }
+  return r
 
 def rpcGetRef (r : Lsp.RpcRef) : ReaderT RpcObjectStore Id (Option Dynamic) :=
-  return (← read).aliveRefs.find? r
+  return (← read).aliveRefs.find? r |>.map (·.obj)
 
 def rpcReleaseRef (r : Lsp.RpcRef) : StateM RpcObjectStore Bool := do
   let st ← get
-  if st.aliveRefs.contains r then
+  let some referencedObj := st.aliveRefs.find? r
+    | return false
+  if referencedObj.rc == 1 then
     set { st with aliveRefs := st.aliveRefs.erase r }
-    return true
   else
-    return false
+    set { st with aliveRefs :=
+      st.aliveRefs.insert r { referencedObj with rc :=
+        referencedObj.rc - 1 } }
+  return true
 
 /-- `RpcEncodable α` means that `α` can be deserialized from and serialized into JSON
 for the purpose of receiving arguments to and sending return values from
@@ -128,11 +131,11 @@ structure WithRpcRef (α : Type u) where
   val : α
   deriving Inhabited
 
-instance [TypeName α] : RpcEncodable (WithRpcRef α) :=
+private unsafe def rpcEncodableWithRpcRef [TypeName α] : RpcEncodable (WithRpcRef α) :=
   { rpcEncode, rpcDecode }
 where
   -- separate definitions to prevent inlining
-  rpcEncode r := toJson <$> rpcStoreRef (.mk r.val)
+  rpcEncode r := toJson <$> rpcStoreRef r.val
   rpcDecode j := do
     let r ← fromJson? j
     match (← rpcGetRef r) with
@@ -142,5 +145,10 @@ where
           return ⟨obj⟩
         else
           throw s!"RPC call type mismatch in reference '{r}'\nexpected '{TypeName.typeName α}', got '{any.typeName}'"
+
+@[implemented_by rpcEncodableWithRpcRef]
+instance [TypeName α] : RpcEncodable (WithRpcRef α) where
+  rpcEncode _ := pure default
+  rpcDecode _ := throw ""
 
 end Lean.Server
